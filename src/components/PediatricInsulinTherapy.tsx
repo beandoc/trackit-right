@@ -37,36 +37,41 @@ export function PediatricInsulinTherapy() {
     <section className="py-24 px-6 max-w-7xl mx-auto space-y-24">
       
       {/* Header: Technological Standard */}
-      <div className="flex flex-col lg:flex-row gap-16 items-center">
-        <div className="flex-1 space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 lg:gap-20">
+        <div className="flex-1 space-y-6 lg:space-y-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-widest">
             <Zap className="w-4 h-4" />
             Specialist Module: Pediatric Insulin Physiology
           </div>
-          <h2 className="text-4xl lg:text-7xl font-black text-foreground leading-[1.1] tracking-tighter">
-            Automated <br /> <span className="text-primary text-glow">Delivery</span> <br /> Standard.
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-foreground leading-[1.05] tracking-tighter">
+            Automated <br /> 
+            <span className="text-primary text-glow">Delivery</span> <br /> 
+            Standard.
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl font-medium">
+          <p className="text-slate-500 dark:text-slate-400 text-lg sm:text-xl leading-relaxed max-w-xl font-medium">
             2025 clinical consensus identifies **Automated Insulin Delivery (AID)** as the standard of care for pediatric T1DM, significantly improving nocturnal stability and A1C metrics.
           </p>
-          <div className="flex flex-wrap gap-4">
-             <div className="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded-xl border border-border flex items-center gap-2">
+          <div className="flex flex-wrap gap-3 pt-2">
+             <div className="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded-xl border border-border flex items-center gap-2 shadow-sm">
                 <Target className="w-4 h-4 text-primary" />
                 <span className="text-[10px] font-black uppercase text-foreground">Target A1C &lt; 7.0%</span>
              </div>
-             <div className="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded-xl border border-border flex items-center gap-2">
+             <div className="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded-xl border border-border flex items-center gap-2 shadow-sm">
                 <Clock className="w-4 h-4 text-secondary" />
                 <span className="text-[10px] font-black uppercase text-foreground">Time in Range &gt; 70%</span>
              </div>
           </div>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="w-full lg:w-1/3 flex flex-col gap-4">
            {aidBenefits.map((stat, i) => (
-             <div key={i} className="p-8 rounded-[32px] bg-card border border-border hover:border-primary/30 transition-all group">
-                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{stat.label}</p>
-                <h4 className="text-3xl font-black text-foreground group-hover:text-primary transition-colors">{stat.value}</h4>
-                <p className="text-xs text-slate-500 mt-2 font-medium">{stat.desc}</p>
+             <div key={i} className="p-8 rounded-[2rem] bg-card border border-border hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all group relative overflow-hidden">
+                <div className="relative z-10">
+                  <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-1">{stat.label}</p>
+                  <h4 className="text-4xl font-black text-foreground group-hover:text-primary transition-colors">{stat.value}</h4>
+                  <p className="text-[11px] text-muted-foreground mt-2 font-medium leading-relaxed">{stat.desc}</p>
+                </div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 blur-2xl rounded-full translate-x-12 -translate-y-12 opacity-0 group-hover:opacity-100 transition-opacity" />
              </div>
            ))}
         </div>
