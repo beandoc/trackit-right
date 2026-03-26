@@ -1,14 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Localizer } from "./Localizer"
 import { Search, Bell, User, LayoutDashboard, Calendar, Activity, ClipboardList } from "lucide-react"
 import Link from "next/link"
 
 const navItems = [
-  { name: "Dashboard", icon: LayoutDashboard, href: "#" },
-  { name: "Appointments", icon: Calendar, href: "#" },
-  { name: "Health Vitals", icon: Activity, href: "#" },
-  { name: "Reports", icon: ClipboardList, href: "#" },
+  { name: "Clinical Dashboard", icon: LayoutDashboard, href: "#" },
+  { name: "Knowledge Hub", icon: ClipboardList, href: "#specialist-hub" },
 ]
 
 export function Navbar() {
@@ -38,9 +37,8 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-5">
-          <button className="p-2 text-slate-400 hover:text-white transition-colors">
-            <Search className="w-5 h-5" />
-          </button>
+          <Localizer />
+          <div className="h-8 w-[1px] bg-white/10 mx-1" />
           <button className="p-2 text-slate-400 hover:text-white transition-colors relative">
             <Bell className="w-5 h-5" />
             <span className="absolute top-2 right-2 w-2 h-2 bg-accent rounded-full border-2 border-slate-950" />

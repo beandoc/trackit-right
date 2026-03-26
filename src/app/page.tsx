@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import { Navbar } from "@/components/Navbar"
 import { DiabetesInsights } from "@/components/DiabetesInsights"
@@ -5,6 +7,8 @@ import { DiabetesKnowledgeCenter } from "@/components/DiabetesKnowledgeCenter"
 import { RiskManagement } from "@/components/RiskManagement"
 import { ClinicalConsultation } from "@/components/ClinicalConsultation"
 import { Type1Specialist } from "@/components/Type1Specialist"
+import { T1ScreeningMonitoring } from "@/components/T1ScreeningMonitoring"
+import { AdultT1Management } from "@/components/AdultT1Management"
 import { Type2Specialist } from "@/components/Type2Specialist"
 import { WomenDiabetesSpecialist } from "@/components/WomenDiabetesSpecialist"
 import { LifestyleNavigator } from "@/components/LifestyleNavigator"
@@ -27,20 +31,41 @@ import {
   Footprints,
   Scale,
   Ban,
-  Thermometer
+  Thermometer,
+  Baby,
+  Search
 } from "lucide-react"
 import { useState } from "react"
+import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
-const specialistTabs = [
-  { id: 'foundation', label: 'Foundation', icon: Stethoscope },
-  { id: 'type1', label: 'Type 1', icon: Zap },
-  { id: 'type2', label: 'Type 2', icon: Users },
-  { id: 'women', label: 'Women', icon: Sparkles },
-  { id: 'lifestyle', label: 'Lifestyle', icon: MapPin },
-  { id: 'footcare', label: 'Foot Care', icon: Footprints },
-  { id: 'diet', label: 'Weight/Diet', icon: Scale },
-  { id: 'cessation', label: 'Cessation', icon: Ban },
-  { id: 'sickday', label: 'Sick Day', icon: Thermometer },
+const specialistGroups = [
+  { 
+    name: "Assessment", 
+    items: [
+      { id: 'foundation', label: 'Basics', icon: Stethoscope },
+      { id: 'screening', label: 'Screening', icon: Search },
+    ]
+  },
+  {
+    name: "Chronic Care",
+    items: [
+      { id: 'type1', label: 'Pediatric T1', icon: Baby },
+      { id: 'adult-t1', label: 'Adult T1', icon: Stethoscope },
+      { id: 'type2', label: 'Type 2 Care', icon: Users },
+      { id: 'women', label: 'Women', icon: Sparkles },
+    ]
+  },
+  {
+    name: "Lifestyle & Prevention",
+    items: [
+      { id: 'lifestyle', label: 'Lifestyle', icon: MapPin },
+      { id: 'footcare', label: 'Foot Care', icon: Footprints },
+      { id: 'diet', label: 'Weight/Diet', icon: Scale },
+      { id: 'cessation', label: 'Cessation', icon: Ban },
+      { id: 'sickday', label: 'Sick Day', icon: Thermometer },
+    ]
+  }
 ]
 
 export default function Home() {
@@ -143,23 +168,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Specialist Hub: Tabbed Controls */}
-      <section className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-y border-white/5 py-4 scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-6 overflow-x-auto no-scrollbar">
-          <div className="flex gap-2 min-w-max p-1 bg-white/[0.02] border border-white/5 rounded-2xl">
-            {specialistTabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
-                  activeTab === tab.id 
-                    ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-[1.02]' 
-                    : 'text-slate-500 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                <tab.icon className="w-4 h-4" />
-                {tab.label}
-              </button>
+      {/* Specialist Hub: Grouped Navigation */}
+      <section id="specialist-hub" className="sticky top-0 z-50 bg-slate-950/90 dark:bg-slate-950/90 backdrop-blur-xl border-y border-slate-200 dark:border-white/5 py-4 scroll-mt-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-8 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+            {specialistGroups.map((group, idx) => (
+              <div key={idx} className="flex flex-col gap-2.5">
+                <span className="text-[8px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">{group.name}</span>
+                <div className="flex gap-1.5 p-1 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-2xl relative">
+                  {group.items.map((tab) => {
+                    const isActive = activeTab === tab.id
+                    return (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={cn(
+                          "flex items-center gap-2 px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] transition-all duration-300 relative group min-w-fit",
+                          isActive 
+                            ? "text-white bg-primary shadow-lg shadow-primary/20" 
+                            : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                        )}
+                      >
+                        <tab.icon className={cn(
+                          "w-3.5 h-3.5",
+                          isActive ? "scale-110" : "group-hover:scale-110"
+                        )} />
+                        {tab.label}
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeTabIndicator"
+                            className="absolute inset-0 bg-primary/10 rounded-xl -z-10"
+                            initial={false}
+                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          />
+                        )}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -175,7 +222,9 @@ export default function Home() {
             </>
           )}
           
+          {activeTab === 'screening' && <T1ScreeningMonitoring />}
           {activeTab === 'type1' && <Type1Specialist />}
+          {activeTab === 'adult-t1' && <AdultT1Management />}
           {activeTab === 'type2' && <Type2Specialist />}
           {activeTab === 'women' && <WomenDiabetesSpecialist />}
           {activeTab === 'lifestyle' && <LifestyleNavigator />}
