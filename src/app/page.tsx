@@ -13,6 +13,7 @@ import { Type2Specialist } from "@/components/Type2Specialist"
 import { WomenDiabetesSpecialist } from "@/components/WomenDiabetesSpecialist"
 import { LifestyleNavigator } from "@/components/LifestyleNavigator"
 import { FootCareSpecialist } from "@/components/FootCareSpecialist"
+import { ResourceHub } from "@/components/ResourceHub"
 import { AdvancedDietProtocol } from "@/components/AdvancedDietProtocol"
 import { CessationSpecialist } from "@/components/CessationSpecialist"
 import { SickDayProtocol } from "@/components/SickDayProtocol"
@@ -236,6 +237,7 @@ export default function Home() {
       </div>
 
       {/* Cross-Cutting Clinical Utilities */}
+      <ResourceHub />
       <DiabetesInsights />
       <ClinicalConsultation />
 
