@@ -14,26 +14,24 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between glass-card px-8 py-3 rounded-2xl border-white/5 bg-slate-900/40">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center shadow-[0_0_20px_rgba(14,165,233,0.3)]">
-            <Activity className="text-white w-6 h-6" />
+        <div className="flex items-center gap-2 lg:hidden">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/30">
+            <Activity className="text-white w-5 h-5" />
           </div>
-          <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+          <span className="text-sm font-bold tracking-tight text-foreground">
             Track-it-Right
           </span>
         </div>
 
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="group flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
-            >
-              <item.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              {item.name}
-            </Link>
-          ))}
+        <div className="hidden lg:flex items-center gap-6">
+          <div className="relative group">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input 
+              type="text" 
+              placeholder="Search protocols..."
+              className="bg-muted border border-border rounded-xl py-2 pl-10 pr-4 text-xs font-medium focus:ring-2 focus:ring-primary/20 transition-all w-64"
+            />
+          </div>
         </div>
 
         <div className="flex items-center gap-5">

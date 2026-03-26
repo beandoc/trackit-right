@@ -102,7 +102,7 @@ export default function Home() {
       <Navbar />
       <Sidebar />
       
-      <div className="lg:pl-[280px]">
+      <div className="w-full">
         {/* Background Glows */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 blur-[150px] -z-10 rounded-full" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 blur-[120px] -z-10 rounded-full" />
@@ -171,9 +171,9 @@ export default function Home() {
              <p className="text-slate-500 max-w-xl mx-auto font-medium text-lg">Select a dedicated medical module below to launch a focused clinical session.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="flex overflow-x-auto pb-8 lg:pb-0 lg:grid lg:grid-cols-3 gap-8 lg:gap-10 snap-x no-scrollbar">
             {specialistGroups.map((group, gIdx) => (
-              <div key={gIdx} className="space-y-6">
+              <div key={gIdx} className="min-w-[280px] sm:min-w-[340px] lg:min-w-0 snap-center space-y-6">
                 <div className="flex items-center gap-3 px-2">
                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                    <h3 className="text-[10px] font-black text-primary uppercase tracking-[0.3em] font-display">{group.name}</h3>
@@ -187,12 +187,12 @@ export default function Home() {
                        className="group relative flex flex-col items-start p-6 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-500 text-left overflow-hidden"
                      >
                        <div className="flex items-center gap-4 mb-3">
-                         <div className="p-3 rounded-2xl bg-slate-900 border border-white/5 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all">
+                         <div className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-border group-hover:bg-primary/10 group-hover:border-primary/20 transition-all">
                            <item.icon className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
                          </div>
-                         <h4 className="text-sm font-black text-white tracking-wide uppercase">{item.label}</h4>
+                         <h4 className="text-sm font-black text-foreground dark:text-white tracking-wide uppercase">{item.label}</h4>
                        </div>
-                       <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed font-medium">
+                       <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed font-medium">
                          {item.summary}
                        </p>
                        <div className="mt-4 flex items-center gap-2 self-end">

@@ -169,7 +169,10 @@ export function ClinicalNavigator() {
             </div>
             
             <div className="flex justify-center pt-8">
-              <button className="px-10 py-5 bg-foreground text-background font-black rounded-2xl text-xs uppercase tracking-[0.2em] shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-3 group">
+              <button 
+                onClick={() => document.getElementById('specialist-hub')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-5 bg-primary text-white font-black rounded-2xl text-xs uppercase tracking-widest shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-3 group"
+              >
                 <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                 Customize My Experience
               </button>

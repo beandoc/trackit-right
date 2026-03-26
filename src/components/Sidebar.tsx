@@ -32,10 +32,10 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile Toggle Button */}
+      {/* Clinical Menu FAB */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 z-[120] lg:hidden p-4 rounded-2xl bg-primary text-white shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-4 group"
+        className="fixed bottom-8 right-8 z-[120] p-4 rounded-2xl bg-primary text-white shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-4 group"
       >
         <Menu className="w-6 h-6" />
         <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded-lg">Clinical Menu</span>
@@ -54,14 +54,12 @@ export function Sidebar() {
         )}
       </AnimatePresence>
 
-      {/* Main Sidebar */}
       <motion.aside
-        initial={false}
+        initial={{ x: -280 }}
         animate={{ 
-          x: isOpen ? 0 : -300,
-          opacity: 1
+          x: isOpen ? 0 : -280
         }}
-        className={`fixed top-0 left-0 bottom-0 w-[280px] bg-slate-950/40 backdrop-blur-2xl border-r border-white/5 z-[100] transition-all flex flex-col p-8 lg:translate-x-0 group`}
+        className="fixed top-0 left-0 bottom-0 w-[280px] bg-background/80 backdrop-blur-2xl border-r border-border z-[150] transition-transform flex flex-col p-8 group overflow-y-auto"
       >
         {/* Close Button (Mobile) */}
         <button
