@@ -108,25 +108,25 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 blur-[120px] -z-10 rounded-full" />
 
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24 border-b border-white/5">
+        <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24 border-b border-border">
           <div className="flex-1 text-center lg:text-left z-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-6 animate-pulse">
               <Shield className="w-3.5 h-3.5" />
               Nirogyam Endocrine Health
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold font-display leading-[1.1] mb-8 bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-slate-500">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-display leading-[1.1] mb-8 bg-clip-text text-transparent bg-gradient-to-br from-foreground via-foreground to-slate-500">
               Personalized <br /> <span className="text-primary text-glow font-black">Clinical Care.</span>
             </h1>
 
-            <p className="text-lg text-slate-400 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0">
+            <p className="text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0">
               Welcome to your digital endocrine specialist. Explore precise medical modules designed to reduce complications and simplify your management.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
               <button 
                 onClick={() => document.getElementById('clinical-navigator')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group relative px-8 py-4 bg-primary rounded-xl font-bold text-white shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 overflow-hidden"
+                className="w-full sm:w-auto group relative px-8 py-4 bg-primary rounded-xl font-bold text-white shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 overflow-hidden"
               >
                 <span className="relative z-10 font-bold">Start My Assessment</span>
                 <ChevronRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -134,7 +134,7 @@ export default function Home() {
               
               <button 
                 onClick={() => document.getElementById('specialist-hub')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group px-8 py-4 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-xl font-bold text-slate-300 hover:bg-slate-800/60 transition-all flex items-center gap-3"
+                className="w-full sm:w-auto group px-8 py-4 bg-white/5 dark:bg-slate-900/50 backdrop-blur-md border border-border rounded-xl font-bold text-foreground hover:bg-white/10 dark:hover:bg-slate-800/60 transition-all flex items-center justify-center gap-3"
               >
                 Browse All Modules
                 <ArrowRight className="w-4 h-4 text-slate-500 group-hover:translate-x-1 transition-transform" />
@@ -144,16 +144,16 @@ export default function Home() {
 
           <div className="flex-1 relative w-full lg:w-auto mt-12 lg:mt-0 max-w-2xl">
             <div className="relative z-10">
-              <div className="rounded-3xl border border-white/10 overflow-hidden shadow-2xl glass-card relative group">
+              <div className="rounded-3xl border border-border overflow-hidden shadow-2xl glass-card relative group max-h-[40vh] sm:max-h-[50vh] lg:max-h-none">
                 <Image 
                   src="/assets/images/hero_endocrine.png" 
                   alt="Endocrine Portal" 
                   width={700} 
                   height={700}
-                  className="w-full h-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                  className="w-full h-auto opacity-90 lg:opacity-80 group-hover:opacity-100 transition-opacity object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
               </div>
             </div>
           </div>

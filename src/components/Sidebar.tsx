@@ -35,9 +35,10 @@ export function Sidebar() {
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-20 left-6 z-[45] lg:hidden p-3 rounded-2xl bg-slate-900/80 backdrop-blur-xl border border-white/10 text-white shadow-2xl"
+        className="fixed bottom-8 right-8 z-[120] lg:hidden p-4 rounded-2xl bg-primary text-white shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-4 group"
       >
         <Menu className="w-6 h-6" />
+        <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded-lg">Clinical Menu</span>
       </button>
 
       {/* Sidebar Overlay (Mobile) */}
