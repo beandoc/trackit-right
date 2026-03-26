@@ -102,7 +102,7 @@ export function Sidebar() {
                  </div>
               </div>
               <div className="flex-1 overflow-hidden">
-                 <p className="text-sm font-bold text-white truncate">Dr. Shreya Roy</p>
+                 <p className="text-sm font-bold text-white truncate">Dr Sreevatsa T</p>
                  <p className="text-[10px] text-slate-500 font-bold uppercase truncate">Endocrine Specialist</p>
               </div>
            </div>
