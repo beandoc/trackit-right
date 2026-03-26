@@ -16,10 +16,41 @@ export function Localizer() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
 
-  // Ensure component is mounted before rendering theme-dependent UI to avoid hydration mismatch
   React.useEffect(() => {
     setMounted(true)
+    
+    // Initialize Google Translate
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,mr',
+        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,
+      }, 'google_translate_element');
+    };
+
+    const addScript = () => {
+      const script = document.createElement('script');
+      script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.async = true;
+      document.body.appendChild(script);
+    };
+
+    if (!document.querySelector('script[src*="translate.google.com"]')) {
+      addScript();
+    }
   }, [])
+
+  const changeLanguage = (code: string) => {
+    setLang(code);
+    setIsOpen(false);
+    
+    const translateSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (translateSelect) {
+      translateSelect.value = code;
+      translateSelect.dispatchEvent(new Event('change'));
+    }
+  };
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
@@ -29,6 +60,9 @@ export function Localizer() {
 
   return (
     <div className="flex items-center gap-2">
+      {/* Hidden element for Google Translate initialization */}
+      <div id="google_translate_element" style={{ display: 'none' }} />
+
       {/* Theme Toggle */}
       <button
         onClick={toggleTheme}
@@ -62,12 +96,7 @@ export function Localizer() {
               {languages.map((l) => (
                 <button
                   key={l.code}
-                  onClick={() => {
-                    setLang(l.code)
-                    setIsOpen(false)
-                    // In a real app, this would trigger a locale change via next-intl or similar
-                    console.log(`Language changed to: ${l.code}`)
-                  }}
+                  onClick={() => changeLanguage(l.code)}
                   className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
                 >
                   {l.name}
@@ -80,4 +109,11 @@ export function Localizer() {
       </div>
     </div>
   )
+}
+
+declare global {
+  interface Window {
+    google: any;
+    googleTranslateElementInit: () => void;
+  }
 }
