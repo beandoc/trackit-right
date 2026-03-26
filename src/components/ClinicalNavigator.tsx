@@ -23,14 +23,70 @@ const diabetesTypes = [
 ]
 
 const categories = [
-  { id: 'getting-started', label: 'Getting Started', icon: Info, color: 'text-blue-500', bg: 'bg-blue-500/10' },
-  { id: 'eating', label: 'Eating', icon: Utensils, color: 'text-emerald-500', bg: 'bg-emerald-500/10' },
-  { id: 'heart', label: 'Heart Health', icon: Heart, color: 'text-red-500', bg: 'bg-red-500/10' },
-  { id: 'support', label: 'Social & Emotional', icon: Handshake, color: 'text-purple-500', bg: 'bg-purple-500/10' },
-  { id: 'on-track', label: 'Staying on Track', icon: Clock, color: 'text-amber-500', bg: 'bg-amber-500/10' },
-  { id: 'managing', label: 'Managing Diabetes', icon: Stethoscope, color: 'text-primary', bg: 'bg-primary/10' },
-  { id: 'moving', label: 'Moving', icon: Move, color: 'text-secondary', bg: 'bg-secondary/10' },
-  { id: 'caregivers', label: 'For Caregivers', icon: Users, color: 'text-pink-500', bg: 'bg-pink-500/10' }
+  { 
+    id: 'getting-started', 
+    label: 'Getting Started', 
+    summary: 'Essentials for your first 90 days of management.',
+    icon: Info, 
+    color: 'text-blue-500', 
+    bg: 'bg-blue-500/10' 
+  },
+  { 
+    id: 'eating', 
+    label: 'Eating', 
+    summary: 'Master MNT, carb counting, and portion control.',
+    icon: Utensils, 
+    color: 'text-emerald-500', 
+    bg: 'bg-emerald-500/10' 
+  },
+  { 
+    id: 'heart', 
+    label: 'Heart Health', 
+    summary: 'Protecting your large vessels and ABC targets.',
+    icon: Heart, 
+    color: 'text-red-500', 
+    bg: 'bg-red-500/10' 
+  },
+  { 
+    id: 'support', 
+    label: 'Social & Emotional', 
+    summary: 'Resilience protocols and stress management.',
+    icon: Handshake, 
+    color: 'text-purple-500', 
+    bg: 'bg-purple-500/10' 
+  },
+  { 
+    id: 'on-track', 
+    label: 'Staying on Track', 
+    summary: 'Consistency in monitoring and lab frequency.',
+    icon: Clock, 
+    color: 'text-amber-500', 
+    bg: 'bg-amber-500/10' 
+  },
+  { 
+    id: 'managing', 
+    label: 'Managing Diabetes', 
+    summary: 'Clinical procedures for insulin and oral meds.',
+    icon: Stethoscope, 
+    color: 'text-primary', 
+    bg: 'bg-primary/10' 
+  },
+  { 
+    id: 'moving', 
+    label: 'Moving', 
+    summary: 'Aerobic and resistance training protocols.',
+    icon: Move, 
+    color: 'text-secondary', 
+    bg: 'bg-secondary/10' 
+  },
+  { 
+    id: 'caregivers', 
+    label: 'For Caregivers', 
+    summary: 'Support strategies for pediatric & elder care.',
+    icon: Users, 
+    color: 'text-pink-500', 
+    bg: 'bg-pink-500/10' 
+  }
 ]
 
 export function ClinicalNavigator() {
@@ -100,9 +156,10 @@ export function ClinicalNavigator() {
                   <div className={`p-3 rounded-2xl w-fit ${cat.bg} group-hover:scale-110 transition-transform`}>
                     <cat.icon className={`w-6 h-6 ${cat.color}`} />
                   </div>
-                  <div>
+                  <div className="space-y-2">
                     <h4 className="text-sm font-black text-foreground uppercase tracking-wider">{cat.label}</h4>
-                    <div className="flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p className="text-[10px] text-slate-500 font-medium leading-relaxed">{cat.summary}</p>
+                    <div className="flex items-center gap-1 pt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                       <span className="text-[10px] font-black text-secondary uppercase tracking-widest">Explore</span>
                       <ChevronRight className="w-3 h-3 text-secondary" />
                     </div>
