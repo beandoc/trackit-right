@@ -9,6 +9,7 @@ import { ClinicalConsultation } from "@/components/ClinicalConsultation"
 import { T1ScreeningMonitoring } from "@/components/T1ScreeningMonitoring"
 import { PediatricInsulinTherapy } from "@/components/PediatricInsulinTherapy"
 import { AdultT1Management } from "@/components/AdultT1Management"
+import { ClinicalNavigator } from "@/components/ClinicalNavigator"
 import { Type2Specialist } from "@/components/Type2Specialist"
 import { WomenDiabetesSpecialist } from "@/components/WomenDiabetesSpecialist"
 import { LifestyleNavigator } from "@/components/LifestyleNavigator"
@@ -168,6 +169,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Clinical Navigator: Personalized Entry Path */}
+      <ClinicalNavigator />
 
       {/* Specialist Hub: Grouped Navigation */}
       <section id="specialist-hub" className="sticky top-0 z-50 bg-slate-950/90 dark:bg-slate-950/90 backdrop-blur-xl border-y border-slate-200 dark:border-white/5 py-4 scroll-mt-20 overflow-hidden">
