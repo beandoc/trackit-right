@@ -54,37 +54,41 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
-const specialistGroups = [
+const clinicalPillars = [
   { 
-    name: "Assessment", 
-    items: [
-      { id: 'foundation', label: 'Basics / 9 Pillars', icon: ShieldCheck, summary: 'The 9-pillar defensive baseline for diabetes.' },
-      { id: 'screening', label: 'Screening', icon: Search, summary: 'Early detection protocols and bloodwork markers.' },
-      { id: 'cardio', label: 'Heart Defense', icon: Heart, summary: 'Advanced cardiovascular risk mitigation.' },
-    ]
+    id: 'foundation', 
+    label: 'Foundation & Screening', 
+    icon: ShieldCheck, 
+    summary: '9-Pilar defensive baseline and early detection protocols.',
+    groups: ['Assessment', 'Screening']
   },
-  {
-    name: "Chronic Care",
-    items: [
-      { id: 'type1', label: 'Pediatric T1', icon: Baby, summary: 'Insulin titration and school-age management.' },
-      { id: 'adult-t1', label: 'Adult T1', icon: Stethoscope, summary: 'Modern automation and lifestyle integration.' },
-      { id: 'type2', label: 'Type 2 Care', icon: Users, summary: 'Metabolic health and long-term remission.' },
-      { id: 'women', label: 'Women', icon: Sparkles, summary: 'Hormonal cycles and reproductive health.' },
-      { id: 'infection', label: 'Immunity/Infection', icon: Bug, summary: 'Immune system resilience and skin care.' },
-      { id: 'micro', label: 'Micro (Eye/Kidney)', icon: Eye, summary: 'Protecting tiny blood vessels and nerves.' },
-      { id: 'macro', label: 'Macro (Stroke/Heart)', icon: ShieldEllipsis, summary: 'Large vessel protection and stroke prevention.' },
-    ]
+  { 
+    id: 'type1', 
+    label: 'Type 1 Management', 
+    icon: Baby, 
+    summary: 'Pediatric and Adult T1 protocols, insulin titration, and tech.',
+    groups: ['Pediatric T1', 'Adult T1']
   },
-  {
-    name: "Lifestyle & Prevention",
-    items: [
-      { id: 'lifestyle', label: 'Lifestyle', icon: MapPin, summary: 'Exercise physiology and movement therapy.' },
-      { id: 'footcare', label: 'Foot Care', icon: Footprints, summary: 'Clinical podiatry and ulcer prevention.' },
-      { id: 'diet', label: 'Weight/Diet', icon: Scale, summary: 'Precision nutrition and weight management.' },
-      { id: 'cessation', label: 'Cessation', icon: Ban, summary: 'Tobacco withdrawal and metabolic repair.' },
-      { id: 'sickday', label: 'Sick Day', icon: Thermometer, summary: 'Emergency protocols for illness and fever.' },
-      { id: 'support', label: 'Stressor/Resilience', icon: Brain, summary: 'Mental health and psychological resilience.' },
-    ]
+  { 
+    id: 'type2', 
+    label: 'Metabolic & Women', 
+    icon: Users, 
+    summary: 'Type 2 care, remission pathways, and female hormone health.',
+    groups: ['Type 2 Care', 'Women Health']
+  },
+  { 
+    id: 'macro', 
+    label: 'Vascular & Organ Defense', 
+    icon: ShieldEllipsis, 
+    summary: 'Comprehensive protection for Heart, Kidneys, Eyes, and Stroke.',
+    groups: ['Heart', 'Kidney', 'Eye', 'Stroke']
+  },
+  { 
+    id: 'lifestyle', 
+    label: 'Resilience & Lifestyle', 
+    icon: MapPin, 
+    summary: 'Exercise, Diet, Mental Health, and Infection resilience.',
+    groups: ['Lifestyle', 'Mental Health', 'Nutrition']
   }
 ]
 
@@ -164,47 +168,38 @@ export default function Home() {
           <ClinicalNavigator />
         </section>
 
-        {/* Specialist Hub: Clean Modular Knowledge Directory */}
+        {/* Specialist Hub: Simplified Clinical Pillars */}
         <section id="specialist-hub" className="py-24 px-6 max-w-7xl mx-auto space-y-16 scroll-mt-20">
           <div className="text-center space-y-4">
-             <h2 className="text-4xl lg:text-6xl font-black text-white tracking-tighter">Clinical Specialist Hub</h2>
-             <p className="text-slate-500 max-w-xl mx-auto font-medium text-lg">Select a dedicated medical module below to launch a focused clinical session.</p>
+             <h2 className="text-4xl lg:text-6xl font-black text-foreground tracking-tighter">Clinical Specialist Hub</h2>
+             <p className="text-muted-foreground max-w-xl mx-auto font-medium text-lg">Focus on a core clinical pillar to access specialized protocols and defensive guidelines.</p>
           </div>
 
-          <div className="flex overflow-x-auto pb-8 lg:pb-0 lg:grid lg:grid-cols-3 gap-8 lg:gap-10 snap-x no-scrollbar">
-            {specialistGroups.map((group, gIdx) => (
-              <div key={gIdx} className="min-w-[280px] sm:min-w-[340px] lg:min-w-0 snap-center space-y-6">
-                <div className="flex items-center gap-3 px-2">
-                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                   <h3 className="text-[10px] font-black text-primary uppercase tracking-[0.3em] font-display">{group.name}</h3>
-                </div>
-                
-                <div className="flex flex-col gap-3">
-                   {group.items.map((item, iIdx) => (
-                     <button
-                       key={iIdx}
-                       onClick={() => openSpecialty(item)}
-                       className="group relative flex flex-col items-start p-6 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-500 text-left overflow-hidden"
-                     >
-                       <div className="flex items-center gap-4 mb-3">
-                         <div className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-border group-hover:bg-primary/10 group-hover:border-primary/20 transition-all">
-                           <item.icon className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
-                         </div>
-                         <h4 className="text-sm font-black text-foreground dark:text-white tracking-wide uppercase">{item.label}</h4>
-                       </div>
-                       <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed font-medium">
-                         {item.summary}
-                       </p>
-                       <div className="mt-4 flex items-center gap-2 self-end">
-                         <span className="text-[9px] font-black text-primary uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Launch Module</span>
-                         <ArrowRight className="w-3.5 h-3.5 text-primary translate-x-3 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all" />
-                       </div>
-                       
-                       <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity translate-x-12 -translate-y-12" />
-                     </button>
-                   ))}
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {clinicalPillars.map((pillar, pIdx) => (
+              <button
+                 key={pIdx}
+                 onClick={() => openSpecialty(pillar)}
+                 className="group relative flex flex-col items-center p-8 rounded-[2.5rem] bg-card border border-border hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 text-center overflow-hidden"
+               >
+                 <div className="p-5 rounded-3xl bg-primary/10 border border-primary/20 group-hover:scale-110 transition-transform mb-6">
+                   <pillar.icon className="w-8 h-8 text-primary" />
+                 </div>
+                 
+                 <div className="space-y-4 flex-1 flex flex-col items-center">
+                   <h4 className="text-sm font-black text-foreground tracking-wide uppercase">{pillar.label}</h4>
+                   <p className="text-[10px] text-muted-foreground leading-relaxed font-medium line-clamp-3">
+                     {pillar.summary}
+                   </p>
+                 </div>
+
+                 <div className="mt-8 flex items-center justify-center gap-2 group/btn py-3 px-6 rounded-2xl bg-muted text-foreground group-hover:bg-primary group-hover:text-white transition-all w-full">
+                   <span className="text-[10px] font-black uppercase tracking-widest">Open Pillar</span>
+                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                 </div>
+                 
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity translate-x-12 -translate-y-12" />
+               </button>
             ))}
           </div>
         </section>
