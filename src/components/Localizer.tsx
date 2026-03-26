@@ -19,36 +19,48 @@ export function Localizer() {
   React.useEffect(() => {
     setMounted(true)
     
-    // Initialize Google Translate
+    // Define the initializer globally
     window.googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,hi,mr',
+        includedLanguages: 'hi,mr',
         layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false,
       }, 'google_translate_element');
     };
 
-    const addScript = () => {
+    // Robust script loading
+    const loadGoogleTranslate = () => {
+      if (document.querySelector('script[src*="translate.google.com"]')) return;
+      
       const script = document.createElement('script');
       script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       script.async = true;
+      script.onerror = () => console.error("Google Translate failed to load.");
       document.body.appendChild(script);
     };
 
-    if (!document.querySelector('script[src*="translate.google.com"]')) {
-      addScript();
-    }
+    loadGoogleTranslate();
   }, [])
 
   const changeLanguage = (code: string) => {
     setLang(code);
     setIsOpen(false);
     
-    const translateSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (translateSelect) {
-      translateSelect.value = code;
-      translateSelect.dispatchEvent(new Event('change'));
+    // Explicitly handle "en" by restoring the original page or selecting the default
+    const translateCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (translateCombo) {
+      translateCombo.value = code === 'en' ? '' : code;
+      translateCombo.dispatchEvent(new Event('change'));
+    } else {
+      // If combo isn't ready yet, retry briefly
+      setTimeout(() => {
+        const retryCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+        if (retryCombo) {
+          retryCombo.value = code === 'en' ? '' : code;
+          retryCombo.dispatchEvent(new Event('change'));
+        }
+      }, 500);
     }
   };
 
