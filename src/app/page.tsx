@@ -11,6 +11,10 @@ import { PediatricInsulinTherapy } from "@/components/PediatricInsulinTherapy"
 import { AdultT1Management } from "@/components/AdultT1Management"
 import { ClinicalNavigator } from "@/components/ClinicalNavigator"
 import { Type2Specialist } from "@/components/Type2Specialist"
+import { VascularDefenseHub } from "@/components/VascularDefenseHub"
+import { MicrovascularDefense } from "@/components/MicrovascularDefense"
+import { MacrovascularDefense } from "@/components/MacrovascularDefense"
+import { ResilienceProtocol } from "@/components/ResilienceProtocol"
 import { InfectionDefense } from "@/components/InfectionDefense"
 import { WomenDiabetesSpecialist } from "@/components/WomenDiabetesSpecialist"
 import { LifestyleNavigator } from "@/components/LifestyleNavigator"
@@ -40,7 +44,11 @@ import {
   Search,
   Brain,
   MessageCircleOff,
-  Bug
+  Bug,
+  ShieldEllipsis,
+  Eye,
+  Heart,
+  ShieldCheck
 } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
@@ -50,8 +58,9 @@ const specialistGroups = [
   { 
     name: "Assessment", 
     items: [
-      { id: 'foundation', label: 'Basics', icon: Stethoscope },
+      { id: 'foundation', label: 'Basics / 9 Pillars', icon: ShieldCheck },
       { id: 'screening', label: 'Screening', icon: Search },
+      { id: 'cardio', label: 'Heart Defense', icon: Heart },
     ]
   },
   {
@@ -62,6 +71,8 @@ const specialistGroups = [
       { id: 'type2', label: 'Type 2 Care', icon: Users },
       { id: 'women', label: 'Women', icon: Sparkles },
       { id: 'infection', label: 'Immunity/Infection', icon: Bug },
+      { id: 'micro', label: 'Micro (Eye/Kidney)', icon: Eye },
+      { id: 'macro', label: 'Macro (Stroke/Heart)', icon: ShieldEllipsis },
     ]
   },
   {
@@ -229,6 +240,7 @@ export default function Home() {
         <div key={activeTab} className="animate-in fade-in slide-in-from-bottom-8 duration-700">
           {activeTab === 'foundation' && (
             <>
+              <ResilienceProtocol />
               <DiabetesKnowledgeCenter />
               <RiskManagement />
             </>
@@ -240,6 +252,9 @@ export default function Home() {
           {activeTab === 'type2' && <Type2Specialist />}
           {activeTab === 'women' && <WomenDiabetesSpecialist />}
           {activeTab === 'infection' && <InfectionDefense />}
+          {activeTab === 'cardio' && <VascularDefenseHub />}
+          {activeTab === 'micro' && <MicrovascularDefense />}
+          {activeTab === 'macro' && <MacrovascularDefense />}
           {activeTab === 'lifestyle' && <LifestyleNavigator />}
           {activeTab === 'footcare' && <FootCareSpecialist />}
           {activeTab === 'diet' && <AdvancedDietProtocol />}
