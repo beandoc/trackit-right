@@ -28,11 +28,9 @@ import { SickDayProtocol } from "@/components/SickDayProtocol"
 import { 
   Activity, 
   Shield, 
-  Droplets, 
   Zap, 
   ChevronRight, 
   Play, 
-  ArrowUpRight,
   Stethoscope,
   Users,
   Sparkles,
@@ -44,7 +42,6 @@ import {
   Baby,
   Search,
   Brain,
-  MessageCircleOff,
   Bug,
   ShieldEllipsis,
   Eye,
@@ -194,70 +191,97 @@ export default function Home() {
         {/* Clinical Navigator: Personalized Entry Path */}
         <ClinicalNavigator />
 
-        {/* Specialist Hub: Grouped Navigation */}
-        <section id="specialist-hub" className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-xl border-y border-white/5 py-4 scroll-mt-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-8 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
-              {specialistGroups.map((group, idx) => (
-                <div key={idx} className="flex flex-col gap-2.5">
-                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-[0.2em] ml-2">{group.name}</span>
-                  <div className="flex gap-1.5 p-1 bg-white/5 border border-white/5 rounded-2xl relative">
-                    {group.items.map((tab) => {
-                      const isActive = activeTab === tab.id
-                      return (
-                        <button
-                          key={tab.id}
-                          onClick={() => setActiveTab(tab.id)}
-                          className={cn(
-                            "flex items-center gap-2 px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] transition-all duration-300 relative group min-w-fit",
-                            isActive 
-                              ? "text-white bg-primary shadow-lg shadow-primary/20" 
-                              : "text-slate-400 hover:text-white"
-                          )}
-                        >
-                          <tab.icon className={cn(
-                            "w-3.5 h-3.5",
-                            isActive ? "scale-110" : "group-hover:scale-110"
-                          )} />
-                          {tab.label}
-                        </button>
-                      )
-                    })}
+        {/* Specialist Hub: Professional Scholarly Navigation */}
+        <section id="specialist-hub" className="py-24 px-6 max-w-7xl mx-auto space-y-16">
+          <div className="flex flex-col lg:flex-row gap-16 items-start">
+            
+            {/* Navigation Sidebar (Content Area) */}
+            <div className="w-full lg:w-80 shrink-0 space-y-8 sticky top-32">
+              <div className="space-y-4">
+                 <h3 className="text-sm font-black text-primary uppercase tracking-[0.3em]">Knowledge Directory</h3>
+                 <p className="text-xs text-slate-500 font-medium">Select a clinical specialization to view advanced protocols and data.</p>
+              </div>
+
+              <div className="space-y-10">
+                {specialistGroups.map((group, idx) => (
+                  <div key={idx} className="space-y-4">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">{group.name}</span>
+                    <div className="flex flex-col gap-1.5 p-1.5 bg-white/5 border border-white/5 rounded-3xl">
+                      {group.items.map((tab) => {
+                        const isActive = activeTab === tab.id
+                        return (
+                          <button
+                            key={tab.id}
+                            onClick={() => {
+                              setActiveTab(tab.id)
+                              document.getElementById('specialty-content')?.scrollIntoView({ behavior: 'smooth' })
+                            }}
+                            className={cn(
+                              "flex items-center gap-4 px-5 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest transition-all duration-300 relative group text-left",
+                              isActive 
+                                ? "text-white bg-primary shadow-2xl shadow-primary/20 scale-[1.02] z-10" 
+                                : "text-slate-500 hover:text-white hover:bg-white/5"
+                            )}
+                          >
+                            <tab.icon className={cn(
+                              "w-4 h-4 shrink-0 transition-transform",
+                              isActive ? "scale-110" : "group-hover:scale-110"
+                            )} />
+                            <span className="line-clamp-1">{tab.label}</span>
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Specialty Content Area */}
+            <div id="specialty-content" className="flex-1 min-h-[900px] w-full">
+              <div className="mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-white/5 pb-12">
+                 <div className="space-y-2">
+                    <div className="inline-flex items-center gap-2 text-primary">
+                      <Activity className="w-4 h-4" />
+                      <span className="text-[10px] font-black uppercase tracking-widest">Protocol Active</span>
+                    </div>
+                    <h2 className="text-4xl lg:text-6xl font-black text-white tracking-tighter capitalize">
+                      {specialistGroups.flatMap(g => g.items).find(i => i.id === activeTab)?.label}
+                    </h2>
+                 </div>
+                 <button className="px-6 py-3 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white/5 transition-colors">
+                    Export Dataset
+                 </button>
+              </div>
+
+              <div key={activeTab} className="animate-in fade-in slide-in-from-right-8 duration-700">
+                {activeTab === 'foundation' && (
+                  <>
+                    <ResilienceProtocol />
+                    <DiabetesKnowledgeCenter />
+                    <RiskManagement />
+                  </>
+                )}
+                
+                {activeTab === 'screening' && <T1ScreeningMonitoring />}
+                {activeTab === 'type1' && <PediatricInsulinTherapy />}
+                {activeTab === 'adult-t1' && <AdultT1Management />}
+                {activeTab === 'type2' && <Type2Specialist />}
+                {activeTab === 'women' && <WomenDiabetesSpecialist />}
+                {activeTab === 'infection' && <InfectionDefense />}
+                {activeTab === 'cardio' && <VascularDefenseHub />}
+                {activeTab === 'micro' && <MicrovascularDefense />}
+                {activeTab === 'macro' && <MacrovascularDefense />}
+                {activeTab === 'lifestyle' && <LifestyleNavigator />}
+                {activeTab === 'footcare' && <FootCareSpecialist />}
+                {activeTab === 'diet' && <AdvancedDietProtocol />}
+                {activeTab === 'cessation' && <CessationSpecialist />}
+                {activeTab === 'sickday' && <SickDayProtocol />}
+                {activeTab === 'support' && <PsychologicalDefense />}
+              </div>
             </div>
           </div>
         </section>
-
-        {/* Dynamic Content Area */}
-        <div className="min-h-[800px] relative">
-          <div key={activeTab} className="animate-in fade-in slide-in-from-bottom-8 duration-700">
-            {activeTab === 'foundation' && (
-              <>
-                <ResilienceProtocol />
-                <DiabetesKnowledgeCenter />
-                <RiskManagement />
-              </>
-            )}
-            
-            {activeTab === 'screening' && <T1ScreeningMonitoring />}
-            {activeTab === 'type1' && <PediatricInsulinTherapy />}
-            {activeTab === 'adult-t1' && <AdultT1Management />}
-            {activeTab === 'type2' && <Type2Specialist />}
-            {activeTab === 'women' && <WomenDiabetesSpecialist />}
-            {activeTab === 'infection' && <InfectionDefense />}
-            {activeTab === 'cardio' && <VascularDefenseHub />}
-            {activeTab === 'micro' && <MicrovascularDefense />}
-            {activeTab === 'macro' && <MacrovascularDefense />}
-            {activeTab === 'lifestyle' && <LifestyleNavigator />}
-            {activeTab === 'footcare' && <FootCareSpecialist />}
-            {activeTab === 'diet' && <AdvancedDietProtocol />}
-            {activeTab === 'cessation' && <CessationSpecialist />}
-            {activeTab === 'sickday' && <SickDayProtocol />}
-            {activeTab === 'support' && <PsychologicalDefense />}
-          </div>
-        </div>
 
         {/* Cross-Cutting Clinical Utilities */}
         <ResourceHub />
