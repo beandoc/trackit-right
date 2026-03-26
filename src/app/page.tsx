@@ -6,8 +6,8 @@ import { DiabetesInsights } from "@/components/DiabetesInsights"
 import { DiabetesKnowledgeCenter } from "@/components/DiabetesKnowledgeCenter"
 import { RiskManagement } from "@/components/RiskManagement"
 import { ClinicalConsultation } from "@/components/ClinicalConsultation"
-import { Type1Specialist } from "@/components/Type1Specialist"
 import { T1ScreeningMonitoring } from "@/components/T1ScreeningMonitoring"
+import { PediatricInsulinTherapy } from "@/components/PediatricInsulinTherapy"
 import { AdultT1Management } from "@/components/AdultT1Management"
 import { Type2Specialist } from "@/components/Type2Specialist"
 import { WomenDiabetesSpecialist } from "@/components/WomenDiabetesSpecialist"
@@ -223,7 +223,7 @@ export default function Home() {
           )}
           
           {activeTab === 'screening' && <T1ScreeningMonitoring />}
-          {activeTab === 'type1' && <Type1Specialist />}
+          {activeTab === 'type1' && <PediatricInsulinTherapy />}
           {activeTab === 'adult-t1' && <AdultT1Management />}
           {activeTab === 'type2' && <Type2Specialist />}
           {activeTab === 'women' && <WomenDiabetesSpecialist />}
