@@ -11,9 +11,11 @@ import { PediatricInsulinTherapy } from "@/components/PediatricInsulinTherapy"
 import { AdultT1Management } from "@/components/AdultT1Management"
 import { ClinicalNavigator } from "@/components/ClinicalNavigator"
 import { Type2Specialist } from "@/components/Type2Specialist"
+import { InfectionDefense } from "@/components/InfectionDefense"
 import { WomenDiabetesSpecialist } from "@/components/WomenDiabetesSpecialist"
 import { LifestyleNavigator } from "@/components/LifestyleNavigator"
 import { FootCareSpecialist } from "@/components/FootCareSpecialist"
+import { PsychologicalDefense } from "@/components/PsychologicalDefense"
 import { ResourceHub } from "@/components/ResourceHub"
 import { AdvancedDietProtocol } from "@/components/AdvancedDietProtocol"
 import { CessationSpecialist } from "@/components/CessationSpecialist"
@@ -35,7 +37,10 @@ import {
   Ban,
   Thermometer,
   Baby,
-  Search
+  Search,
+  Brain,
+  MessageCircleOff,
+  Bug
 } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
@@ -56,6 +61,7 @@ const specialistGroups = [
       { id: 'adult-t1', label: 'Adult T1', icon: Stethoscope },
       { id: 'type2', label: 'Type 2 Care', icon: Users },
       { id: 'women', label: 'Women', icon: Sparkles },
+      { id: 'infection', label: 'Immunity/Infection', icon: Bug },
     ]
   },
   {
@@ -66,6 +72,7 @@ const specialistGroups = [
       { id: 'diet', label: 'Weight/Diet', icon: Scale },
       { id: 'cessation', label: 'Cessation', icon: Ban },
       { id: 'sickday', label: 'Sick Day', icon: Thermometer },
+      { id: 'support', label: 'Stressor/Resilience', icon: Brain },
     ]
   }
 ]
@@ -232,11 +239,13 @@ export default function Home() {
           {activeTab === 'adult-t1' && <AdultT1Management />}
           {activeTab === 'type2' && <Type2Specialist />}
           {activeTab === 'women' && <WomenDiabetesSpecialist />}
+          {activeTab === 'infection' && <InfectionDefense />}
           {activeTab === 'lifestyle' && <LifestyleNavigator />}
           {activeTab === 'footcare' && <FootCareSpecialist />}
           {activeTab === 'diet' && <AdvancedDietProtocol />}
           {activeTab === 'cessation' && <CessationSpecialist />}
           {activeTab === 'sickday' && <SickDayProtocol />}
+          {activeTab === 'support' && <PsychologicalDefense />}
         </div>
       </div>
 
