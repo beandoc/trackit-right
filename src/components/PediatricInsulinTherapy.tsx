@@ -33,9 +33,9 @@ const clinicalHoneymoon = {
 }
 
 const aidBenefits = [
-  { label: "A1C Reduction", value: "-0.41%", desc: "In pediatric trials (2025 Meta-analysis)." },
-  { label: "Time in Range", value: "+11.5%", desc: "Overall improvement in glycemic stability." },
-  { label: "Overnight TIR", value: "+19.7%", desc: "Significant reduction in nocturnal variability." }
+  { label: "Better A1C", value: "Significant", desc: "Helps reach long-term targets safely." },
+  { label: "Stable Range", value: "+11%", desc: "More time spent in the healthy target range." },
+  { label: "Night Safety", value: "Reliable", desc: "Massive reduction in night-time episodes." }
 ]
 
 export function PediatricInsulinTherapy() {
@@ -57,7 +57,7 @@ export function PediatricInsulinTherapy() {
             Standard.
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-lg sm:text-xl leading-relaxed max-w-xl font-medium">
-            2025 clinical consensus identifies **Automated Insulin Delivery (AID)** as the standard of care for pediatric T1DM, significantly improving nocturnal stability and A1C metrics.
+            Smart Insulin Systems (Automated Pumping) are now the standard of care for children, helping to keep blood sugar stable especially during the night.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
              <div className="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded-xl border border-border flex items-center gap-2 shadow-sm">
@@ -99,10 +99,10 @@ export function PediatricInsulinTherapy() {
 
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { range: "0.3 - 0.7 u/kg", label: "Prepubertal", context: "Classic new onset" },
-                  { range: "0.7 - 1.5 u/kg", label: "Pubertal", context: "Hormonal resistance" },
-                  { range: "< 0.5 u/kg", label: "Honeymoon", context: "Partial remission" },
-                  { range: "1:10 - 1:50", label: "ICR", context: "Carb Coverage Ratio" }
+                  { range: "0.3 - 0.7 units", label: "Early Childhood", context: "Per kg of weight" },
+                  { range: "0.7 - 1.5 units", label: "Teenage Years", context: "Per kg of weight" },
+                  { range: "< 0.5 units", label: "Recovery Phase", context: "Wait-and-see periods" },
+                  { range: "1:10 - 1:50", label: "Meal Ratio", context: "Amount per carb grams" }
                 ].map((item, i) => (
                   <div key={i} className="p-6 rounded-2xl bg-slate-50 dark:bg-white/5 border border-border flex flex-col gap-2">
                      <span className="text-2xl font-black text-primary">{item.range}</span>
@@ -157,10 +157,10 @@ export function PediatricInsulinTherapy() {
                      <div className="p-3 bg-primary rounded-2xl">
                         <Smartphone className="text-white w-6 h-6" />
                      </div>
-                     <h3 className="text-3xl font-black text-foreground">HCL: Hybrid Closed Loop</h3>
+                     <h3 className="text-3xl font-black text-foreground">Smart Pumping Systems</h3>
                   </div>
                   <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl font-medium">
-                     The current 2025 standard utilizes an algorithm to automate basal delivery based on real-time CGM data. This "Intelligent Stewardship" reduces the burden of manual adjustments, especially during sleep.
+                     Modern "Smart" pumps use a sensor to automatically adjust insulin levels throughout the day and night, reducing the need for manual math.
                   </p>
                </div>
                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">

@@ -31,6 +31,13 @@ const insulinTypes = [
 
 export function MedicationTaxonomyHub() {
   const [activeTab, setActiveTab] = useState<'organs' | 'insulin-profiles' | 'interference' | 'protective-toolbox'>('organs')
+  
+  const tabLabels: Record<string, string> = {
+    'organs': 'Target Organs',
+    'insulin-profiles': 'Insulin Timing',
+    'interference': 'Side Effects',
+    'protective-toolbox': 'Preventive Meds'
+  }
 
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto space-y-24">
@@ -39,11 +46,11 @@ export function MedicationTaxonomyHub() {
       <div className="flex flex-col lg:flex-row gap-16 items-start">
         <div className="flex-1 space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest">
-            <FlaskRound className="w-4 h-4" /> CLINICAL PHARMACOPOEIA
+            <FlaskRound className="w-4 h-4" /> CLINICAL MEDICINE GUIDE
           </div>
           <h2 className="text-4xl lg:text-7xl font-black text-white leading-tight tracking-tighter">
             The Treatment <br />
-            <span className="text-primary tracking-tight text-glow">Taxonomy.</span>
+            <span className="text-primary tracking-tight text-glow">Roadmap.</span>
           </h2>
           <p className="text-slate-400 text-lg font-medium leading-relaxed max-w-2xl">
             Diabetes management utilizes a "toolbox" of medications targeting different organ systems. From insulin secretion to liver glucose output, precision is key.
@@ -57,7 +64,7 @@ export function MedicationTaxonomyHub() {
                onClick={() => setActiveTab(t as any)}
                className={`px-10 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${activeTab === t ? 'bg-primary border-primary text-white shadow-xl shadow-primary/20' : 'bg-slate-950 border-white/5 text-slate-500 hover:text-white hover:border-white/10'}`}
              >
-               {t.replace('-', ' ')}
+               {tabLabels[t]}
              </button>
            ))}
         </div>

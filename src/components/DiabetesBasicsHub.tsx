@@ -33,17 +33,23 @@ const pillars = [
 ]
 
 const a1cMap = [
-  { a1c: 14.0, mg: 380, status: 'Critical Action' },
-  { a1c: 12.0, mg: 315, status: 'High Risk' },
-  { a1c: 10.0, mg: 250, status: 'Action Suggested' },
-  { a1c: 8.0, mg: 180, status: 'Above Goal' },
-  { a1c: 7.0, mg: 150, status: 'Good Control' },
-  { a1c: 6.0, mg: 115, status: 'Near Goal' },
-  { a1c: 5.0, mg: 80, status: 'Excellent' }
+  { a1c: 14.0, mg: 380, status: 'Very High' },
+  { a1c: 12.0, mg: 315, status: 'High' },
+  { a1c: 10.0, mg: 250, status: 'Above Target' },
+  { a1c: 8.0, mg: 180, status: 'Above Target' },
+  { a1c: 7.0, mg: 150, status: 'Good Target' },
+  { a1c: 6.0, mg: 115, status: 'In Range' },
+  { a1c: 5.0, mg: 80, status: 'In Range' }
 ]
 
 export function DiabetesBasicsHub() {
-  const [activeTab, setActiveTab] = useState<'basics' | 'diagnostics' | 'a1c-converter'>('basics')
+  const [activeTab, setActiveTab] = useState<'basics' | 'test-results' | 'a1c-converter'>('basics')
+  
+  const tabLabels: Record<string, string> = {
+    'basics': 'How it Works',
+    'test-results': 'Test Results',
+    'a1c-converter': 'A1C Guide'
+  }
 
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto space-y-24">
@@ -52,25 +58,25 @@ export function DiabetesBasicsHub() {
       <div className="flex flex-col lg:flex-row gap-16 items-start">
         <div className="flex-1 space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest">
-            <ShieldCheck className="w-4 h-4" /> FUNDAMENTAL STEWARDSHIP
+            <ShieldCheck className="w-4 h-4" /> DIABETES BASICS
           </div>
           <h2 className="text-4xl lg:text-7xl font-black text-white leading-tight tracking-tighter">
             The Basics of <br />
             <span className="text-primary tracking-tight text-glow">Diabetes Care.</span>
           </h2>
           <p className="text-slate-400 text-lg font-medium leading-relaxed max-w-2xl">
-            "Your care is SPECIFIC TO YOU." Diabetes is a manageable journey, and your goals are determined in partnership with your clinical team.
+            Diabetes is a manageable journey. Learning the basics of how your body uses insulin and what your test results mean will help you stay in control.
           </p>
         </div>
 
         <div className="flex flex-col gap-3">
-           {['basics', 'diagnostics', 'a1c-converter'].map((t) => (
+           {['basics', 'test-results', 'a1c-converter'].map((t) => (
              <button 
                key={t}
                onClick={() => setActiveTab(t as any)}
                className={`px-12 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${activeTab === t ? 'bg-primary border-primary text-white shadow-xl shadow-primary/20' : 'bg-slate-950 border-white/5 text-slate-500 hover:text-white'}`}
              >
-               {t.replace('-', ' ')}
+               {tabLabels[t]}
              </button>
            ))}
         </div>
@@ -139,9 +145,9 @@ export function DiabetesBasicsHub() {
           </motion.div>
         )}
 
-        {activeTab === 'diagnostics' && (
+        {activeTab === 'test-results' && (
           <motion.div 
-            key="diagnostics"
+            key="test-results"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-12"

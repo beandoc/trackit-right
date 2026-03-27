@@ -70,37 +70,37 @@ import { motion } from "framer-motion"
 const clinicalPillars = [
   { 
     id: 'foundation', 
-    label: 'Foundation & Screening', 
+    label: 'Basics & Checkups', 
     icon: ShieldCheck, 
-    summary: '9-Pilar defensive baseline and early detection protocols.',
+    summary: 'The foundations of care and your early checkup schedule.',
     groups: ['Assessment', 'Screening']
   },
   { 
     id: 'type1', 
-    label: 'Type 1 Management', 
+    label: 'Type 1 Care', 
     icon: Baby, 
-    summary: 'Pediatric and Adult T1 protocols, insulin titration, and tech.',
+    summary: 'Everything for Type 1, from kids to adults.',
     groups: ['Pediatric T1', 'Adult T1']
   },
   { 
     id: 'type2', 
-    label: 'Metabolic & Women', 
+    label: 'Hormones & Health', 
     icon: Users, 
-    summary: 'Type 2 care, remission pathways, and female hormone health.',
+    summary: 'Type 2 care plans and specific health tips for women.',
     groups: ['Type 2 Care', 'Women Health']
   },
   { 
     id: 'macro', 
-    label: 'Vascular & Organ Defense', 
+    label: 'Heart & Organ Care', 
     icon: ShieldEllipsis, 
-    summary: 'Comprehensive protection for Heart, Kidneys, Eyes, and Stroke.',
+    summary: 'Protecting your Heart, Kidneys, Eyes, and staying safe.',
     groups: ['Heart', 'Kidney', 'Eye', 'Stroke']
   },
   { 
     id: 'lifestyle', 
-    label: 'Resilience & Lifestyle', 
+    label: 'Daily Life & Mood', 
     icon: MapPin, 
-    summary: 'Exercise, Diet, Mental Health, and Infection resilience.',
+    summary: 'Exercise, healthy eating, and managing your mood.',
     groups: ['Lifestyle', 'Mental Health', 'Nutrition']
   }
 ]
