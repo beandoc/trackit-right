@@ -25,6 +25,7 @@ import { ResourceHub } from "@/components/ResourceHub"
 import { AdvancedDietProtocol } from "@/components/AdvancedDietProtocol"
 import { CessationSpecialist } from "@/components/CessationSpecialist"
 import { SickDayProtocol } from "@/components/SickDayProtocol"
+import { Testimonials } from "@/components/Testimonials"
 import { ClinicalDrawer } from "@/components/ClinicalDrawer"
 import { ADAGuidelines2024 } from "@/components/ADAGuidelines2024"
 import { InsulinFoundations } from "@/components/InsulinFoundations"
@@ -323,6 +324,7 @@ export default function Home() {
 
         {/* Cross-Cutting Clinical Utilities */}
         <section className="bg-slate-950/40 py-24">
+          <Testimonials />
           <ResourceHub />
           <DiabetesInsights />
           <ClinicalConsultation />
