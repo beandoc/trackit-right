@@ -27,20 +27,9 @@ const menuItems = [
   { name: "Care Team Chat", icon: MessageCircle, href: "#" },
 ]
 
-export function Sidebar() {
-  const [isOpen, setIsOpen] = React.useState(false)
-
+export function Sidebar({ isOpen, onToggle }: { isOpen: boolean, onToggle: (open: boolean) => void }) {
   return (
     <>
-      {/* Clinical Menu FAB */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 z-[120] p-4 rounded-2xl bg-primary text-white shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-4 group"
-      >
-        <Menu className="w-6 h-6" />
-        <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded-lg">Clinical Menu</span>
-      </button>
-
       {/* Sidebar Overlay (Mobile) */}
       <AnimatePresence>
         {isOpen && (
@@ -48,8 +37,8 @@ export function Sidebar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 lg:hidden"
+            onClick={() => onToggle(false)}
+            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[210] lg:hidden"
           />
         )}
       </AnimatePresence>
@@ -59,12 +48,12 @@ export function Sidebar() {
         animate={{ 
           x: isOpen ? 0 : -280
         }}
-        className="fixed top-0 left-0 bottom-0 w-[280px] bg-background/80 backdrop-blur-2xl border-r border-border z-[150] transition-transform flex flex-col p-8 group overflow-y-auto"
+        className="fixed top-0 left-0 bottom-0 w-[280px] bg-background/95 backdrop-blur-3xl border-r border-border z-[220] transition-transform flex flex-col p-8 group overflow-y-auto shadow-2xl shadow-black/50"
       >
         {/* Close Button (Mobile) */}
         <button
-          onClick={() => setIsOpen(false)}
-          className="absolute top-8 right-8 lg:hidden p-2 rounded-xl bg-white/5 text-slate-400 hover:text-white"
+          onClick={() => onToggle(false)}
+          className="absolute top-8 right-8 p-2 rounded-xl bg-white/5 text-slate-400 hover:text-white"
         >
           <X className="w-5 h-5" />
         </button>
@@ -84,7 +73,9 @@ export function Sidebar() {
             <Link
               key={item.name}
               href={item.href}
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                if (window.innerWidth < 1024) onToggle(false)
+              }}
               className="flex items-center gap-4 px-4 py-3.5 rounded-2xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all group/item"
             >
               <item.icon className="w-5 h-5 transition-transform group-hover/item:scale-110" />

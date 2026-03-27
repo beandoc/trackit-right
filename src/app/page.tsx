@@ -108,6 +108,7 @@ const clinicalPillars = [
 export default function Home() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [activeSpecialty, setActiveSpecialty] = useState<any>(null)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const openSpecialty = (item: any) => {
     setActiveSpecialty(item)
@@ -116,8 +117,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative bg-[#020617] text-slate-200 luxury-gradient overflow-hidden">
-      <Navbar />
-      <Sidebar />
+      <Navbar onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <Sidebar isOpen={isSidebarOpen} onToggle={setIsSidebarOpen} />
       
       <div className="w-full">
         {/* Background Glows */}

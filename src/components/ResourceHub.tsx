@@ -17,8 +17,6 @@ import {
 
 const resources = {
   videos: [
-    { title: "Basics of T1D Management", duration: "12:45", thumbnail: "https://img.youtube.com/vi/kfnc-0_tAks/maxresdefault.jpg", type: "Clinical Masterclass", url: "https://www.youtube.com/watch?v=kfnc-0_tAks" },
-    { title: "Using Insulin Pumps (AID)", duration: "08:20", thumbnail: "https://img.youtube.com/vi/V_qHjI9uX7M/maxresdefault.jpg", type: "Tech Guide", url: "https://www.youtube.com/watch?v=V_qHjI9uX7M" },
     { title: "How to Inject Insulin", duration: "04:32", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Patient Guide", url: "https://www.youtube.com/watch?v=6TBaXTh2ECM" },
     { title: "What is Type 1 Diabetes?", duration: "03:45", thumbnail: "https://img.youtube.com/vi/5W7i5TWa2Y8/maxresdefault.jpg", type: "Clinical Intro", url: "https://www.youtube.com/watch?v=5W7i5TWa2Y8" },
     { title: "What is Type 2 Diabetes?", duration: "04:12", thumbnail: "https://img.youtube.com/vi/uOaZeNjiikM/maxresdefault.jpg", type: "Clinical Intro", url: "https://www.youtube.com/watch?v=uOaZeNjiikM" },

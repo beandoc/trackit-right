@@ -2,25 +2,29 @@
 
 import { motion } from "framer-motion"
 import { Localizer } from "./Localizer"
-import { Search, Bell, User, LayoutDashboard, Calendar, Activity, ClipboardList } from "lucide-react"
+import { Search, Bell, User, LayoutDashboard, Calendar, Activity, ClipboardList, Menu } from "lucide-react"
 import Link from "next/link"
 
-const navItems = [
-  { name: "Clinical Dashboard", icon: LayoutDashboard, href: "#" },
-  { name: "Knowledge Hub", icon: ClipboardList, href: "#specialist-hub" },
-]
-
-export function Navbar() {
+export function Navbar({ onMenuClick }: { onMenuClick: () => void }) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between glass-card px-8 py-3 rounded-2xl border-white/5 bg-slate-900/40">
-        <div className="flex items-center gap-2 lg:hidden">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/30">
-            <Activity className="text-white w-5 h-5" />
+    <nav className="fixed top-0 left-0 right-0 z-[190] px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between glass-card px-4 lg:px-8 py-3 rounded-2xl border-white/5 bg-slate-900/40">
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={onMenuClick}
+            className="p-2 rounded-xl bg-white/5 text-slate-400 hover:text-white transition-colors"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          
+          <div className="flex items-center gap-2 lg:hidden">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/30">
+              <Activity className="text-white w-5 h-5" />
+            </div>
+            <span className="text-sm font-bold tracking-tight text-foreground">
+              Track-it-Right
+            </span>
           </div>
-          <span className="text-sm font-bold tracking-tight text-foreground">
-            Track-it-Right
-          </span>
         </div>
 
         <div className="hidden lg:flex items-center gap-6">
