@@ -62,7 +62,7 @@ export function ClinicalDrawer({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[100]"
+            className="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[180]"
           />
 
           {/* Drawer Panel */}
@@ -77,7 +77,7 @@ export function ClinicalDrawer({
             onDragEnd={(_, info) => {
               if (info.offset.x > 100) onClose()
             }}
-            className="fixed top-0 right-0 h-full w-full lg:w-[850px] bg-background border-l border-border z-[160] shadow-2xl flex flex-col touch-none"
+            className="fixed top-0 right-0 h-full w-full lg:w-[90vw] xl:w-[85vw] max-w-[1250px] bg-background border-l border-border z-[200] shadow-2xl flex flex-col touch-none"
           >
             {/* Header */}
             <header className="p-8 border-b border-border space-y-8 shrink-0 bg-background/50 backdrop-blur-md">
@@ -135,9 +135,8 @@ export function ClinicalDrawer({
               </div>
             </header>
 
-            {/* Content Area */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-8 lg:p-12 bg-background select-text touch-pan-y">
-              <div className="animate-in fade-in slide-in-from-bottom-8 duration-500">
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-10 lg:p-20 bg-background/30 select-text touch-pan-y">
+              <div className="animate-in fade-in slide-in-from-bottom-12 duration-700 max-w-5xl mx-auto">
                 {children}
               </div>
             </div>

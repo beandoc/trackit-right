@@ -226,20 +226,44 @@ export default function Home() {
           description={activeSpecialty?.summary}
         >
           {activeSpecialty?.id === 'foundation' && (
-            <div className="space-y-16">
-              <DiabetesBasicsHub />
-              <HealthMaintenanceHub />
-              <IndianPlateMethod />
-              <NutritionalMasteryHub />
-              <MedicationTaxonomyHub />
-              <GlycemicManagementHub />
-              <InsulinFoundations />
-              <InsulinInjectionGuide />
-              <InsulinSafetyProtocol />
-              <InsulinSideEffects />
-              <ResilienceProtocol />
-              <DiabetesKnowledgeCenter />
-              <RiskManagement />
+            <div className="space-y-20">
+               {/* Internal Sub-Navigator */}
+               <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-8 rounded-3xl bg-slate-900/50 border border-white/5">
+                  {[
+                    { t: 'The Basics', id: 'basics-sec' },
+                    { t: 'Maintenance', id: 'maint-sec' },
+                    { t: 'Eating Guide', id: 'eating-sec' },
+                    { t: 'Medications', id: 'meds-sec' },
+                    { t: 'Resilience', id: 'res-sec' },
+                    { t: 'Risk Check', id: 'risk-sec' }
+                  ].map(sec => (
+                    <button 
+                      key={sec.id}
+                      onClick={() => document.getElementById(sec.id)?.scrollIntoView({ behavior: 'smooth' })}
+                      className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/40 text-center transition-all group"
+                    >
+                      <h4 className="text-xs font-black uppercase text-slate-400 group-hover:text-primary transition-colors">{sec.t}</h4>
+                    </button>
+                  ))}
+               </div>
+
+               <div id="basics-sec"><DiabetesBasicsHub /></div>
+               <div id="maint-sec"><HealthMaintenanceHub /></div>
+               <div id="eating-sec" className="space-y-16">
+                  <IndianPlateMethod />
+                  <NutritionalMasteryHub />
+               </div>
+               <div id="meds-sec" className="space-y-16">
+                  <MedicationTaxonomyHub />
+                  <GlycemicManagementHub />
+                  <InsulinFoundations />
+                  <InsulinInjectionGuide />
+               </div>
+               <div id="res-sec"><ResilienceProtocol /></div>
+               <div id="risk-sec" className="space-y-16">
+                  <DiabetesKnowledgeCenter />
+                  <RiskManagement />
+               </div>
             </div>
           )}
           {activeSpecialty?.id === 'screening' && <T1ScreeningMonitoring />}
