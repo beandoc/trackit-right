@@ -24,8 +24,9 @@ const resources = {
     { title: "How to Test Blood Glucose", duration: "03:15", thumbnail: "https://img.youtube.com/vi/jZ4Tujvz9zg/maxresdefault.jpg", type: "Practical Skill", url: "https://www.youtube.com/watch?v=jZ4Tujvz9zg" }
   ],
   podcasts: [
-    { title: "Living with T1D: Patient Stories", duration: "45:00", host: "Dr. Sharma", type: "Patient Perspectives" },
-    { title: "2025 Diabetes Research Update", duration: "32:15", host: "Clinical Board", type: "Scientific Journal" }
+    { title: "अपनी साँस से मापें फैट लॉस", duration: "15:42", host: "Dr. Sreevatsa", type: "Health Tip", url: "/अपनी_साँस_से_मापें_फैट_लॉस.m4a" },
+    { title: "Living with T1D: Patient Stories", duration: "45:00", host: "Dr. Sharma", type: "Patient Perspectives", url: "#" },
+    { title: "2025 Diabetes Research Update", duration: "32:15", host: "Clinical Board", type: "Scientific Journal", url: "#" }
   ],
   downloads: [
     { title: "Carb Counting Cheat Sheet", format: "PDF", size: "1.2 MB" },
@@ -96,20 +97,20 @@ export function ResourceHub() {
                 </div>
                 <div className="space-y-4">
                   {resources.podcasts.map((pod, i) => (
-                    <div key={i} className="group p-5 bg-card border border-border rounded-2xl hover:border-secondary/30 transition-all cursor-pointer flex gap-4">
-                       <div className="p-3 bg-secondary/10 rounded-xl h-fit">
+                    <a key={i} href={pod.url} target="_blank" rel="noopener noreferrer" className="block group p-5 bg-card border border-border rounded-2xl hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/5 transition-all cursor-pointer flex gap-4">
+                       <div className="p-3 bg-secondary/10 rounded-xl h-fit group-hover:scale-110 transition-transform">
                           <Mic className="text-secondary w-5 h-5" />
                        </div>
                        <div>
-                          <p className="text-[9px] text-slate-500 font-black uppercase">{pod.type}</p>
-                          <h4 className="text-sm font-bold text-foreground mt-0.5 group-hover:text-secondary transition-colors line-clamp-1">{pod.title}</h4>
+                          <p className="text-[9px] text-slate-500 font-black uppercase tracking-widest">{pod.type}</p>
+                          <h4 className="text-sm font-black text-foreground mt-0.5 group-hover:text-secondary transition-colors line-clamp-1">{pod.title}</h4>
                           <div className="flex items-center gap-3 mt-2 text-[10px] text-slate-500 font-medium">
                              <Clock className="w-3 h-3" /> {pod.duration}
                              <span className="opacity-30">|</span>
                              <span>By {pod.host}</span>
                           </div>
                        </div>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
