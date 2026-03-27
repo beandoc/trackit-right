@@ -34,7 +34,12 @@ const resources = {
   ],
   faqs: [
     { q: "Can I exercise during the honeymoon phase?", a: "Yes, but close monitoring is mandatory as insulin needs may drop further during physical activity." },
-    { q: "How often should I test for ketones?", a: "Whenever blood sugar is persistently >250 mg/dL or during any illness." }
+    { q: "How often should I test for ketones?", a: "Whenever blood sugar is persistently >250 mg/dL or during any illness." },
+    { q: "What healthy eating habits can I start today?", a: "Focus on balanced meals with lean protein (5-7 oz), stay hydrated (6-8 cups of water), and maintain regular meal times to prevent sugar spikes." },
+    { q: "How much weight do I need to lose to improve control?", a: "Even a modest loss of 5-7% of your body weight can significantly improve insulin sensitivity and heart health." },
+    { q: "What is the primary treatment for Type 1 Diabetes?", a: "Since the pancreas stops producing insulin, the main treatment is insulin replacement delivered via a pen, syringe, or smart pump." },
+    { q: "Why are heart medications often prescribed for diabetes?", a: "Diabetes increases the risk of heart disease; medications like statins or aspirin are tools to help protect your cardiovascular health regardless of initial numbers." },
+    { q: "What does Basal (long-acting) insulin do?", a: "Basal insulin works for 24+ hours to keep your sugars stable between meals and during the night." }
   ],
   usefulLinks: [
     { label: "ISPAD Clinical Guidelines", url: "#" },
