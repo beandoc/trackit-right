@@ -56,25 +56,25 @@ export function DiabetesBasicsHub() {
       
       {/* Header: Personalization First */}
       <div className="flex flex-col lg:flex-row gap-16 items-start">
-        <div className="flex-1 space-y-8">
+        <div className="flex-1 space-y-6 lg:space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest">
             <ShieldCheck className="w-4 h-4" /> DIABETES BASICS
           </div>
-          <h2 className="text-4xl lg:text-7xl font-black text-white leading-tight tracking-tighter">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tighter">
             The Basics of <br />
             <span className="text-primary tracking-tight text-glow">Diabetes Care.</span>
           </h2>
-          <p className="text-slate-400 text-lg font-medium leading-relaxed max-w-2xl">
+          <p className="text-slate-400 text-base md:text-lg font-medium leading-relaxed max-w-2xl">
             Diabetes is a manageable journey. Learning the basics of how your body uses insulin and what your test results mean will help you stay in control.
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-row lg:flex-col gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
            {['basics', 'test-results', 'a1c-converter'].map((t) => (
              <button 
                key={t}
                onClick={() => setActiveTab(t as any)}
-               className={`px-12 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${activeTab === t ? 'bg-primary border-primary text-white shadow-xl shadow-primary/20' : 'bg-slate-950 border-white/5 text-slate-500 hover:text-white'}`}
+               className={`flex-1 lg:flex-none whitespace-nowrap px-6 lg:px-12 py-3 rounded-xl lg:rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${activeTab === t ? 'bg-primary border-primary text-white shadow-xl shadow-primary/20' : 'bg-slate-950 border-white/5 text-slate-500 hover:text-white'}`}
              >
                {tabLabels[t]}
              </button>
@@ -110,13 +110,13 @@ export function DiabetesBasicsHub() {
             </div>
 
             {/* Pathophysiology Cards */}
-            <div className="grid lg:grid-cols-2 gap-10">
-               <div className="p-12 rounded-[3.5rem] bg-slate-950 border border-white/5 space-y-8 relative overflow-hidden group">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-10">
+               <div className="p-8 md:p-12 rounded-3xl lg:rounded-[3.5rem] bg-slate-950 border border-white/5 space-y-6 lg:space-y-8 relative overflow-hidden group">
                   <div className="absolute top-0 right-0 p-12 opacity-5 translate-x-12 -translate-y-12 group-hover:opacity-10 transition-opacity">
                      <Zap className="w-64 h-64 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-black text-white uppercase">Understanding Type 1</h3>
-                  <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                  <h3 className="text-xl lg:text-2xl font-black text-white uppercase">Understanding Type 1</h3>
+                  <p className="text-xs lg:text-sm text-slate-500 font-medium leading-relaxed">
                     Autoimmune, genetic, or environmental factors cause the body to destroy insulin-producing cells.
                   </p>
                   <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
@@ -125,17 +125,17 @@ export function DiabetesBasicsHub() {
                   </div>
                </div>
 
-               <div className="p-12 rounded-[3.5rem] bg-slate-950 border border-white/5 space-y-8 relative overflow-hidden group">
+               <div className="p-8 md:p-12 rounded-3xl lg:rounded-[3.5rem] bg-slate-950 border border-white/5 space-y-6 lg:space-y-8 relative overflow-hidden group">
                   <div className="absolute top-0 right-0 p-12 opacity-5 translate-x-12 -translate-y-12 group-hover:opacity-10 transition-opacity">
                      <Activity className="w-64 h-64 text-emerald-500" />
                   </div>
-                  <h3 className="text-2xl font-black text-white uppercase">Understanding Type 2</h3>
-                  <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                  <h3 className="text-xl lg:text-2xl font-black text-white uppercase">Understanding Type 2</h3>
+                  <p className="text-xs lg:text-sm text-slate-500 font-medium leading-relaxed">
                     The body makes some insulin but cells do not use it properly (Resistance) or output is insufficient.
                   </p>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-3">
                      {['Weight Gain', 'Family History', 'Older Age', 'Sedentary', 'Gestational History', 'PCOS'].map((f) => (
-                       <div key={f} className="px-3 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-[9px] font-black text-emerald-500 uppercase tracking-widest">
+                       <div key={f} className="px-3 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-[9px] font-black text-emerald-500 uppercase tracking-widest text-center whitespace-nowrap">
                           {f}
                        </div>
                      ))}
@@ -152,16 +152,16 @@ export function DiabetesBasicsHub() {
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-12"
           >
-            <div className="grid lg:grid-cols-3 gap-8">
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                {[
                  { t: "Fasting Glucose", v: "≥ 126", u: "mg/dL", d: "No food for at least 8 hours." },
                  { t: "Random Glucose", v: "≥ 200", u: "mg/dL", d: "Tested at any time of day." },
                  { t: "A1C Measurement", v: "≥ 6.5", u: "%", d: "3-month average calculation." }
                ].map((c, i) => (
-                 <div key={i} className="p-10 rounded-[3rem] bg-slate-950 border border-white/5 text-center space-y-6">
+                 <div key={i} className="p-8 lg:p-10 rounded-2xl md:rounded-[3rem] bg-slate-950 border border-white/5 text-center space-y-4 lg:space-y-6">
                     <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{c.t}</p>
                     <div>
-                       <h4 className="text-6xl font-black text-white leading-none">{c.v}</h4>
+                       <h4 className="text-4xl lg:text-6xl font-black text-white leading-none">{c.v}</h4>
                        <span className="text-xs font-bold text-slate-500 uppercase">{c.u}</span>
                     </div>
                     <p className="text-xs text-slate-600 font-medium italic">{c.d}</p>
@@ -170,24 +170,24 @@ export function DiabetesBasicsHub() {
             </div>
 
             {/* Skills & Tips */}
-            <div className="p-12 rounded-[4rem] bg-indigo-500/5 border border-indigo-500/10 grid md:grid-cols-2 gap-12 items-center">
-               <div className="space-y-6">
-                  <h3 className="text-3xl font-black text-white leading-tight">Accurate <br /> Testing Tips.</h3>
-                  <p className="text-slate-400 text-sm font-medium leading-relaxed">Ensure successful readings with these simple procedural habits from your care book.</p>
+             <div className="p-8 md:p-12 rounded-3xl lg:rounded-[4rem] bg-indigo-500/5 border border-indigo-500/10 grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+               <div className="space-y-4 lg:space-y-6">
+                  <h3 className="text-2xl lg:text-3xl font-black text-white leading-tight">Accurate <br /> Testing Tips.</h3>
+                  <p className="text-slate-400 text-xs lg:text-sm font-medium leading-relaxed">Ensure successful readings with these simple procedural habits from your care book.</p>
                </div>
                <div className="grid gap-4">
-                  <div className="p-6 rounded-3xl bg-slate-950 border border-white/10 flex gap-6 items-center">
-                     <div className="p-4 bg-orange-500/10 rounded-2xl"><Droplets className="text-orange-500 w-6 h-6" /></div>
+                  <div className="p-4 lg:p-6 rounded-2xl lg:rounded-3xl bg-slate-950 border border-white/10 flex gap-4 lg:gap-6 items-center">
+                     <div className="p-3 lg:p-4 bg-orange-500/10 rounded-xl lg:rounded-2xl"><Droplets className="text-orange-500 w-5 h-5 lg:w-6 lg:h-6" /></div>
                      <div>
-                        <h4 className="text-sm font-black text-white uppercase">The Lancet Rule</h4>
-                        <p className="text-[10px] text-slate-500 font-medium">Change Lancet EVERY TIME. Dull needles cause pain.</p>
+                        <h4 className="text-xs lg:text-sm font-black text-white uppercase">The Lancet Rule</h4>
+                        <p className="text-[9px] lg:text-[10px] text-slate-500 font-medium">Change Lancet EVERY TIME. Dull needles cause pain.</p>
                      </div>
                   </div>
-                  <div className="p-6 rounded-3xl bg-slate-950 border border-white/10 flex gap-6 items-center">
-                     <div className="p-4 bg-blue-500/10 rounded-2xl"><Hand className="text-blue-400 w-6 h-6" /></div>
+                  <div className="p-4 lg:p-6 rounded-2xl lg:rounded-3xl bg-slate-950 border border-white/10 flex gap-4 lg:gap-6 items-center">
+                     <div className="p-3 lg:p-4 bg-blue-500/10 rounded-xl lg:rounded-2xl"><Hand className="text-blue-400 w-5 h-5 lg:w-6 lg:h-6" /></div>
                      <div>
-                        <h4 className="text-sm font-black text-white uppercase">Flow Strategy</h4>
-                        <p className="text-[10px] text-slate-500 font-medium">Rub hands to warm them or use warm water to wash hands first.</p>
+                        <h4 className="text-xs lg:text-sm font-black text-white uppercase">Flow Strategy</h4>
+                        <p className="text-[9px] lg:text-[10px] text-slate-500 font-medium">Rub hands to warm them or use warm water to wash hands first.</p>
                      </div>
                   </div>
                </div>
@@ -209,11 +209,11 @@ export function DiabetesBasicsHub() {
                 </p>
              </div>
 
-             <div className="p-1 bg-slate-900 border border-white/10 rounded-[4rem] overflow-hidden shadow-2xl">
-                <table className="w-full text-left border-collapse">
+             <div className="p-1 bg-slate-900 border border-white/10 rounded-2xl md:rounded-[4rem] overflow-hidden shadow-2xl overflow-x-auto">
+                <table className="w-full text-left border-collapse min-w-[600px]">
                    <thead>
                       <tr className="bg-slate-950/50">
-                         <th className="p-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">A1C Test Score (%)</th>
+                         <th className="p-6 md:p-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">A1C Test Score (%)</th>
                          <th className="p-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Mean Blood Glucose (mg/dL)</th>
                          <th className="p-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Clinical Status</th>
                       </tr>
@@ -221,17 +221,17 @@ export function DiabetesBasicsHub() {
                    <tbody>
                       {a1cMap.map((row, i) => (
                         <tr key={i} className="border-t border-white/5 hover:bg-white/[0.02] transition-colors group">
-                           <td className="p-8 font-black text-2xl text-white group-hover:text-primary transition-colors">{row.a1c.toFixed(1)}%</td>
+                           <td className="p-6 md:p-8 font-black text-xl md:text-2xl text-white group-hover:text-primary transition-colors">{row.a1c.toFixed(1)}%</td>
                            <td className="p-8 font-black text-2xl text-slate-400">{row.mg}</td>
                            <td className="p-8 text-right">
-                              <span className={`px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-widest ${
-                                row.a1c <= 6.0 ? 'bg-emerald-500/10 text-emerald-500' :
-                                row.a1c <= 7.0 ? 'bg-blue-500/10 text-blue-400' :
-                                row.a1c <= 10.0 ? 'bg-amber-500/10 text-amber-500' :
-                                'bg-rose-500/10 text-rose-500'
-                              }`}>
-                                 {row.status}
-                              </span>
+                               <span className={`px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                                 row.a1c <= 6.0 ? 'bg-emerald-500/10 text-emerald-500' :
+                                 row.a1c <= 7.0 ? 'bg-blue-500/10 text-blue-400' :
+                                 row.a1c <= 10.0 ? 'bg-amber-500/10 text-amber-500' :
+                                 'bg-rose-500/10 text-rose-500'
+                               }`}>
+                                  {row.status}
+                               </span>
                            </td>
                         </tr>
                       ))}

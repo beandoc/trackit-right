@@ -135,7 +135,7 @@ export function ClinicalDrawer({
               </div>
             </header>
 
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-10 lg:p-20 bg-background/30 select-text touch-pan-y">
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-20 bg-background/30 select-text touch-pan-y">
               <div className="animate-in fade-in slide-in-from-bottom-12 duration-700 max-w-5xl mx-auto">
                 {children}
               </div>

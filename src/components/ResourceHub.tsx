@@ -120,7 +120,7 @@ export function ResourceHub() {
         {/* Sidebar: Downloads & Useful Links */}
         <div className="space-y-8">
            {/* Downloads */}
-           <div className="p-8 glass-card border-border rounded-[2.5rem] space-y-6">
+           <div className="p-6 md:p-8 glass-card border-border rounded-2xl md:rounded-[2.5rem] space-y-6">
               <div className="flex items-center gap-3">
                 <Download className="w-5 h-5 text-primary" />
                 <h3 className="text-xl font-bold text-foreground">Downloads</h3>
@@ -133,11 +133,11 @@ export function ResourceHub() {
                             <FileText className="text-red-500 w-4 h-4" />
                          </div>
                          <div>
-                            <p className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">{dl.title}</p>
+                            <p className="text-xs font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">{dl.title}</p>
                             <p className="text-[9px] text-slate-500 font-bold uppercase">{dl.format} • {dl.size}</p>
                          </div>
                       </div>
-                      <Download className="w-4 h-4 text-slate-400 group-hover:text-primary transition-all" />
+                      <Download className="w-4 h-4 text-slate-400 group-hover:text-primary transition-all flex-shrink-0" />
                    </div>
                  ))}
               </div>
@@ -162,16 +162,16 @@ export function ResourceHub() {
       </div>
 
       {/* FAQ Section: Accordion Placeholder */}
-      <div className="glass-card border-border rounded-[3rem] p-12 space-y-12">
+      <div className="glass-card border-border rounded-3xl md:rounded-[3rem] p-8 md:p-12 space-y-8 md:space-y-12">
         <div className="flex items-center gap-4">
-           <HelpCircle className="w-8 h-8 text-primary" />
-           <h3 className="text-3xl font-bold text-foreground">Frequently Asked Questions</h3>
+           <HelpCircle className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+           <h3 className="text-2xl md:text-3xl font-black text-foreground">Frequently Asked Questions</h3>
         </div>
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
            {resources.faqs.map((faq, i) => (
              <div key={i} className="space-y-3">
-                <p className="text-sm font-black text-foreground flex items-center gap-2">
-                   <MessageCircle className="w-4 h-4 text-primary" />
+                <p className="text-sm font-black text-foreground flex items-start gap-2">
+                   <MessageCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                    {faq.q}
                 </p>
                 <p className="text-xs text-slate-500 border-l-2 border-primary/20 pl-4 py-1 leading-relaxed font-medium">
