@@ -17,9 +17,9 @@ import {
 
 const resources = {
   videos: [
-    { title: "Basics of T1D Management", duration: "12:45", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Clinical Masterclass", url: "#" },
-    { title: "Using Insulin Pumps (AID)", duration: "08:20", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Tech Guide", url: "#" },
-    { title: "How to Inject Insulin (UK)", duration: "04:32", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Patient Guide", url: "https://www.youtube.com/watch?v=6TBaXTh2ECM" },
+    { title: "Basics of T1D Management", duration: "12:45", thumbnail: "https://img.youtube.com/vi/kfnc-0_tAks/maxresdefault.jpg", type: "Clinical Masterclass", url: "https://www.youtube.com/watch?v=kfnc-0_tAks" },
+    { title: "Using Insulin Pumps (AID)", duration: "08:20", thumbnail: "https://img.youtube.com/vi/V_qHjI9uX7M/maxresdefault.jpg", type: "Tech Guide", url: "https://www.youtube.com/watch?v=V_qHjI9uX7M" },
+    { title: "How to Inject Insulin", duration: "04:32", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Patient Guide", url: "https://www.youtube.com/watch?v=6TBaXTh2ECM" },
     { title: "What is Type 1 Diabetes?", duration: "03:45", thumbnail: "https://img.youtube.com/vi/5W7i5TWa2Y8/maxresdefault.jpg", type: "Clinical Intro", url: "https://www.youtube.com/watch?v=5W7i5TWa2Y8" },
     { title: "What is Type 2 Diabetes?", duration: "04:12", thumbnail: "https://img.youtube.com/vi/uOaZeNjiikM/maxresdefault.jpg", type: "Clinical Intro", url: "https://www.youtube.com/watch?v=uOaZeNjiikM" },
     { title: "What is Gestational Diabetes?", duration: "05:24", thumbnail: "https://img.youtube.com/vi/MLxwtwYPkHU/maxresdefault.jpg", type: "Maternal Health", url: "https://www.youtube.com/watch?v=MLxwtwYPkHU" },
@@ -63,20 +63,28 @@ export function ResourceHub() {
            <div className="grid md:grid-cols-2 gap-8">
               {/* Videos */}
               <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Video className="w-5 h-5 text-primary" />
-                  <h3 className="text-xl font-bold text-foreground">Videos</h3>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Video className="w-5 h-5 text-primary" />
+                    <h3 className="text-xl font-bold text-foreground tracking-tight">Clinical Videos</h3>
+                  </div>
+                  <button className="text-[10px] font-black uppercase text-slate-500 hover:text-primary transition-colors flex items-center gap-1">VIEW ALL <ChevronRight className="w-3 h-3" /></button>
                 </div>
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {resources.videos.map((vid, i) => (
-                    <a key={i} href={vid.url} target="_blank" rel="noopener noreferrer" className="block group p-4 bg-card border border-border rounded-2xl hover:border-primary/30 transition-all cursor-pointer">
-                       <div className="w-full h-32 rounded-xl mb-4 bg-slate-900 flex items-center justify-center relative overflow-hidden ring-1 ring-white/5">
-                          <img src={vid.thumbnail} alt={vid.title} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
-                          <Play className="w-8 h-8 text-white fill-current opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-2xl" />
-                          <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 rounded text-[9px] font-black text-white z-10 backdrop-blur-sm">{vid.duration}</div>
+                    <a key={i} href={vid.url} target="_blank" rel="noopener noreferrer" className="block group p-3 bg-card border border-border rounded-2xl hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all cursor-pointer relative overflow-hidden">
+                       <div className="w-full aspect-[16/9] rounded-xl mb-3 bg-slate-950 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+                          <img src={vid.thumbnail} alt={vid.title} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                          <div className="w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-primary transition-all z-10 shadow-2xl">
+                             <Play className="w-4 h-4 text-white fill-current" />
+                          </div>
+                          <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 rounded text-[9px] font-black text-white z-10 backdrop-blur-sm shadow-lg">{vid.duration}</div>
                        </div>
-                       <p className="text-[10px] text-primary font-black uppercase tracking-widest">{vid.type}</p>
-                       <h4 className="text-sm font-bold text-foreground mt-1 group-hover:text-primary transition-colors">{vid.title}</h4>
+                       <div className="space-y-1 px-1">
+                          <p className="text-[9px] text-primary font-black uppercase tracking-widest">{vid.type}</p>
+                          <h4 className="text-xs font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-snug">{vid.title}</h4>
+                       </div>
                     </a>
                   ))}
                 </div>
