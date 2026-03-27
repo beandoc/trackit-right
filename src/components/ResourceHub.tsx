@@ -17,8 +17,13 @@ import {
 
 const resources = {
   videos: [
-    { title: "Basics of T1D Management", duration: "12:45", thumbnail: "bg-primary/20", type: "Clinical Masterclass" },
-    { title: "Using Insulin Pumps (AID)", duration: "08:20", thumbnail: "bg-emerald-500/20", type: "Tech Guide" }
+    { title: "Basics of T1D Management", duration: "12:45", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Clinical Masterclass", url: "#" },
+    { title: "Using Insulin Pumps (AID)", duration: "08:20", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Tech Guide", url: "#" },
+    { title: "How to Inject Insulin (UK)", duration: "04:32", thumbnail: "https://img.youtube.com/vi/6TBaXTh2ECM/maxresdefault.jpg", type: "Patient Guide", url: "https://www.youtube.com/watch?v=6TBaXTh2ECM" },
+    { title: "What is Type 1 Diabetes?", duration: "03:45", thumbnail: "https://img.youtube.com/vi/5W7i5TWa2Y8/maxresdefault.jpg", type: "Clinical Intro", url: "https://www.youtube.com/watch?v=5W7i5TWa2Y8" },
+    { title: "What is Type 2 Diabetes?", duration: "04:12", thumbnail: "https://img.youtube.com/vi/uOaZeNjiikM/maxresdefault.jpg", type: "Clinical Intro", url: "https://www.youtube.com/watch?v=uOaZeNjiikM" },
+    { title: "What is Gestational Diabetes?", duration: "05:24", thumbnail: "https://img.youtube.com/vi/MLxwtwYPkHU/maxresdefault.jpg", type: "Maternal Health", url: "https://www.youtube.com/watch?v=MLxwtwYPkHU" },
+    { title: "How to Test Blood Glucose", duration: "03:15", thumbnail: "https://img.youtube.com/vi/jZ4Tujvz9zg/maxresdefault.jpg", type: "Practical Skill", url: "https://www.youtube.com/watch?v=jZ4Tujvz9zg" }
   ],
   podcasts: [
     { title: "Living with T1D: Patient Stories", duration: "45:00", host: "Dr. Sharma", type: "Patient Perspectives" },
@@ -64,14 +69,15 @@ export function ResourceHub() {
                 </div>
                 <div className="space-y-4">
                   {resources.videos.map((vid, i) => (
-                    <div key={i} className="group p-4 bg-card border border-border rounded-2xl hover:border-primary/30 transition-all cursor-pointer">
-                       <div className={`w-full h-32 rounded-xl mb-4 ${vid.thumbnail} flex items-center justify-center relative overflow-hidden`}>
-                          <Play className="w-8 h-8 text-white fill-current opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                          <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 rounded text-[9px] font-black text-white">{vid.duration}</div>
+                    <a key={i} href={vid.url} target="_blank" rel="noopener noreferrer" className="block group p-4 bg-card border border-border rounded-2xl hover:border-primary/30 transition-all cursor-pointer">
+                       <div className="w-full h-32 rounded-xl mb-4 bg-slate-900 flex items-center justify-center relative overflow-hidden ring-1 ring-white/5">
+                          <img src={vid.thumbnail} alt={vid.title} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
+                          <Play className="w-8 h-8 text-white fill-current opacity-0 group-hover:opacity-100 transition-opacity z-10 drop-shadow-2xl" />
+                          <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 rounded text-[9px] font-black text-white z-10 backdrop-blur-sm">{vid.duration}</div>
                        </div>
                        <p className="text-[10px] text-primary font-black uppercase tracking-widest">{vid.type}</p>
                        <h4 className="text-sm font-bold text-foreground mt-1 group-hover:text-primary transition-colors">{vid.title}</h4>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>

@@ -13,7 +13,8 @@ import {
   MapPin,
   Clock,
   Car,
-  Wind
+  Wind,
+  Scale
 } from "lucide-react"
 
 const lifestyleCategories = [
@@ -35,15 +36,15 @@ const lifestyleCategories = [
     id: "Exercise",
     icon: Wind,
     title: "Aerobic Vitality",
-    desc: "Walking, swimming, or dancing improves insulin sensitivity. Scale slowly to build deep strength.",
-    items: ["Pre/Post Testing", "25m Daily Movement", "Heart Rate Sync", "Hydration Guard"]
+    desc: "Even 10 minutes a day lowers sugar significantly. Scale slowly to build deep strength.",
+    items: ["10m Daily Minimum", "Walking / Bhangra", "Pre/Post Testing", "Hydration Guard"]
   },
   {
-    id: "Intimacy",
-    icon: Heart,
-    title: "Sexual Wellness",
-    desc: "Glucose control is the foundation of intimacy. Address neuropathy and erectile health with a specialist.",
-    items: ["Neuropathy Support", "Vaginal Health", "ED Solutions", "Hormonal Balance"]
+    id: "Metabolism",
+    icon: Scale,
+    title: "Weight Mastery",
+    desc: "Losing 5-7% of your total weight (approx 3-5kg) helps cells use insulin better.",
+    items: ["0.5-0.9kg Weekly Goal", "Portion Stewardship", "Waist Circumference", "Fiber-Rich Choices"]
   }
 ]
 

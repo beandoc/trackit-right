@@ -26,6 +26,17 @@ import { AdvancedDietProtocol } from "@/components/AdvancedDietProtocol"
 import { CessationSpecialist } from "@/components/CessationSpecialist"
 import { SickDayProtocol } from "@/components/SickDayProtocol"
 import { ClinicalDrawer } from "@/components/ClinicalDrawer"
+import { ADAGuidelines2024 } from "@/components/ADAGuidelines2024"
+import { InsulinFoundations } from "@/components/InsulinFoundations"
+import { T2DInsulinStewardship } from "@/components/T2DInsulinStewardship"
+import { InsulinInjectionGuide } from "@/components/InsulinInjectionGuide"
+import { InsulinSafetyProtocol } from "@/components/InsulinSafetyProtocol"
+import { InsulinSideEffects } from "@/components/InsulinSideEffects"
+import { DiabetesBasicsHub } from "@/components/DiabetesBasicsHub"
+import { GlycemicManagementHub } from "@/components/GlycemicManagementHub"
+import { IndianPlateMethod } from "@/components/IndianPlateMethod"
+import { NutritionalMasteryHub } from "@/components/NutritionalMasteryHub"
+import { MedicationTaxonomyHub } from "@/components/MedicationTaxonomyHub"
 import { 
   Activity, 
   Shield, 
@@ -214,15 +225,43 @@ export default function Home() {
         >
           {activeSpecialty?.id === 'foundation' && (
             <div className="space-y-16">
+              <DiabetesBasicsHub />
+              <IndianPlateMethod />
+              <NutritionalMasteryHub />
+              <MedicationTaxonomyHub />
+              <GlycemicManagementHub />
+              <InsulinFoundations />
+              <InsulinInjectionGuide />
+              <InsulinSafetyProtocol />
+              <InsulinSideEffects />
               <ResilienceProtocol />
               <DiabetesKnowledgeCenter />
               <RiskManagement />
             </div>
           )}
           {activeSpecialty?.id === 'screening' && <T1ScreeningMonitoring />}
-          {activeSpecialty?.id === 'type1' && <PediatricInsulinTherapy />}
+          {activeSpecialty?.id === 'type1' && (
+            <div className="space-y-16">
+              <ADAGuidelines2024 />
+              <GlycemicManagementHub />
+              <InsulinFoundations />
+              <InsulinInjectionGuide />
+              <InsulinSafetyProtocol />
+              <InsulinSideEffects />
+              <PediatricInsulinTherapy />
+            </div>
+          )}
           {activeSpecialty?.id === 'adult-t1' && <AdultT1Management />}
-          {activeSpecialty?.id === 'type2' && <Type2Specialist />}
+          {activeSpecialty?.id === 'type2' && (
+            <div className="space-y-16">
+              <T2DInsulinStewardship />
+              <GlycemicManagementHub />
+              <InsulinInjectionGuide />
+              <InsulinSafetyProtocol />
+              <InsulinSideEffects />
+              <Type2Specialist />
+            </div>
+          )}
           {activeSpecialty?.id === 'women' && <WomenDiabetesSpecialist />}
           {activeSpecialty?.id === 'infection' && <InfectionDefense />}
           {activeSpecialty?.id === 'cardio' && <VascularDefenseHub />}

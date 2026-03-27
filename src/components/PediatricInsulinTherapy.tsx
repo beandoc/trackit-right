@@ -15,7 +15,15 @@ import {
   Clock,
   ChevronRight,
   ShieldAlert,
-  Droplets
+  Droplets,
+  Users,
+  Smile,
+  CheckCircle2,
+  Heart,
+  Stethoscope,
+  Footprints,
+  MapPin,
+  Trash2
 } from "lucide-react"
 
 const clinicalHoneymoon = {
@@ -208,6 +216,83 @@ export function PediatricInsulinTherapy() {
          </div>
       </div>
 
+      {/* Junior Mastery & Family Support */}
+      <div className="space-y-16 pt-16 border-t border-border">
+         <div className="text-center space-y-4">
+            <h2 className="text-3xl lg:text-5xl font-black text-foreground tracking-tighter">Junior Mastery & <span className="text-primary text-glow">Family Support.</span></h2>
+            <p className="text-slate-500 text-lg font-medium max-w-2xl mx-auto">Transitioning to self-injection is a milestone, not a mandate. Support your child's readiness at their own pace.</p>
+         </div>
+
+         <div className="grid lg:grid-cols-2 gap-12">
+            {/* Readiness & Psychology */}
+            <div className="p-12 rounded-[3.5rem] bg-indigo-500/5 border border-indigo-500/10 space-y-10 relative overflow-hidden group">
+               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Smile className="w-48 h-48 text-indigo-500" />
+               </div>
+               <div className="space-y-6 relative z-10">
+                  <h3 className="text-2xl font-black text-foreground uppercase tracking-tight">Psychological Readiness</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-medium">There is no "right age" to start. Some children start immediately; others take years. The transition must be child-led and supported.</p>
+                  
+                  <div className="space-y-4">
+                     {[
+                       "Don't pressure your child—wait for their signal.",
+                       "Let them take control if they express interest.",
+                       "Offer to do it yourself if they feel tired or overwhelmed.",
+                       "Keep an eye on their technique to prevent bad habits."
+                     ].map((tip, i) => (
+                       <div key={i} className="flex gap-4 items-start p-4 rounded-2xl bg-white/40 dark:bg-white/5 border border-border/50">
+                          <CheckCircle2 className="w-4 h-4 text-indigo-500 mt-1 shrink-0" />
+                          <span className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-tight">{tip}</span>
+                       </div>
+                     ))}
+                  </div>
+               </div>
+            </div>
+
+            {/* The 6-Step Junior Guide */}
+            <div className="p-12 rounded-[3.5rem] bg-card border border-border space-y-10">
+               <h3 className="text-2xl font-black text-foreground uppercase tracking-tight">Step-by-Step (For Kids)</h3>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {[
+                    { t: "Hygiene", d: "Wash and dry your hands.", icon: Activity },
+                    { t: "Site Choice", d: "Choose stomtach, thighs, or bum.", icon: MapPin },
+                    { t: "Prime Pen", d: "Dial 2 units, press till drop appears.", icon: Droplets },
+                    { t: "Inject (90°)", d: "Dial dose, insert and press to zero.", icon: Syringe },
+                    { t: "Count to 10", d: "Slowly, to give insulin time.", icon: Clock },
+                    { t: "Safety Bin", d: "Discard needle in sharps bin.", icon: Trash2 }
+                  ].map((s, i) => (
+                    <div key={i} className="flex gap-4 items-start p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-border">
+                       <div className="p-3 bg-primary/10 rounded-xl"><s.icon className="w-4 h-4 text-primary" /></div>
+                       <div>
+                          <p className="text-[10px] font-black uppercase text-foreground mb-1">{s.t}</p>
+                          <p className="text-[9px] text-slate-500 font-bold uppercase tracking-tighter leading-tight">{s.d}</p>
+                       </div>
+                    </div>
+                  ))}
+               </div>
+            </div>
+         </div>
+
+         {/* Critical Clinical Warning: Activity & Site Selection */}
+         <div className="p-12 rounded-[4rem] bg-rose-500/5 border border-rose-500/10 flex flex-col lg:flex-row items-center gap-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-12 opacity-5">
+               <Activity className="w-64 h-64 text-rose-500" />
+            </div>
+            <div className="p-8 bg-rose-500/10 rounded-[2.5rem] border border-rose-500/20 shadow-inner">
+               <Users className="text-rose-500 w-12 h-12" />
+            </div>
+            <div className="space-y-4 flex-1 relative z-10">
+               <h3 className="text-3xl font-black text-foreground leading-tight tracking-tight uppercase">The Activity Site Rule</h3>
+               <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                 <span className="text-rose-500 font-black">NEVER</span> inject into a limb that will be used for intense activity immediately. For example, don't inject into a leg just before a football match.
+               </p>
+               <div className="flex gap-4 items-center pt-2">
+                  <div className="p-2 bg-rose-500/10 rounded-lg"><AlertCircle className="w-4 h-4 text-rose-500" /></div>
+                  <p className="text-[10px] font-black text-rose-600 dark:text-rose-400 uppercase tracking-widest">WHY? Exercise increases blood flow, speeding up absorption and triggering severe hypos.</p>
+               </div>
+            </div>
+         </div>
+      </div>
     </section>
   )
 }
