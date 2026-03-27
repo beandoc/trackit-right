@@ -25,6 +25,7 @@ const diabetesTypes = [
 const categories = [
   { 
     id: 'getting-started', 
+    specialtyId: 'foundation',
     label: 'Getting Started', 
     summary: 'Essentials for your first 90 days of management.',
     icon: Info, 
@@ -33,6 +34,7 @@ const categories = [
   },
   { 
     id: 'eating', 
+    specialtyId: 'diet',
     label: 'Eating', 
     summary: 'Master MNT, carb counting, and portion control.',
     icon: Utensils, 
@@ -41,6 +43,7 @@ const categories = [
   },
   { 
     id: 'heart', 
+    specialtyId: 'macro',
     label: 'Heart Health', 
     summary: 'Protecting your large vessels and ABC targets.',
     icon: Heart, 
@@ -49,6 +52,7 @@ const categories = [
   },
   { 
     id: 'support', 
+    specialtyId: 'support',
     label: 'Social & Emotional', 
     summary: 'Resilience protocols and stress management.',
     icon: Handshake, 
@@ -57,6 +61,7 @@ const categories = [
   },
   { 
     id: 'on-track', 
+    specialtyId: 'foundation', // Or a dedicated 'maintenance' ID if we add it
     label: 'Staying on Track', 
     summary: 'Consistency in monitoring and lab frequency.',
     icon: Clock, 
@@ -65,6 +70,7 @@ const categories = [
   },
   { 
     id: 'managing', 
+    specialtyId: 'medications', // Need to make sure this ID exists in page.tsx
     label: 'Managing Diabetes', 
     summary: 'Clinical procedures for insulin and oral meds.',
     icon: Stethoscope, 
@@ -73,6 +79,7 @@ const categories = [
   },
   { 
     id: 'moving', 
+    specialtyId: 'lifestyle',
     label: 'Moving', 
     summary: 'Aerobic and resistance training protocols.',
     icon: Move, 
@@ -81,6 +88,7 @@ const categories = [
   },
   { 
     id: 'caregivers', 
+    specialtyId: 'type1', // Pediatric is currently under type1
     label: 'For Caregivers', 
     summary: 'Support strategies for pediatric & elder care.',
     icon: Users, 
@@ -89,7 +97,11 @@ const categories = [
   }
 ]
 
-export function ClinicalNavigator() {
+interface ClinicalNavigatorProps {
+  onSelectSpecialty: (pillar: any) => void
+}
+
+export function ClinicalNavigator({ onSelectSpecialty }: ClinicalNavigatorProps) {
   const [selectedType, setSelectedType] = useState<string | null>(null)
 
   return (
@@ -147,23 +159,30 @@ export function ClinicalNavigator() {
               <p className="text-slate-500 dark:text-slate-400 font-medium">Fine-tune your dashboard with specific medical topics.</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
-                  className="p-6 rounded-3xl bg-card border border-border hover:border-secondary/30 hover:shadow-xl transition-all group text-left space-y-4 flex flex-col justify-between"
+                  onClick={() => onSelectSpecialty({ 
+                    id: cat.specialtyId, 
+                    label: cat.label, 
+                    summary: cat.summary, 
+                    icon: cat.icon 
+                  })}
+                  className="p-8 rounded-[2.5rem] bg-card border border-border hover:border-secondary/30 hover:shadow-2xl transition-all group text-left space-y-6 flex flex-col justify-between overflow-hidden relative"
                 >
-                  <div className={`p-3 rounded-2xl w-fit ${cat.bg} group-hover:scale-110 transition-transform`}>
-                    <cat.icon className={`w-6 h-6 ${cat.color}`} />
+                  <div className={`p-4 rounded-2xl w-fit ${cat.bg} group-hover:scale-110 transition-transform relative z-10`}>
+                    <cat.icon className={`w-7 h-7 ${cat.color}`} />
                   </div>
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-black text-foreground uppercase tracking-wider">{cat.label}</h4>
-                    <p className="text-[10px] text-slate-500 font-medium leading-relaxed">{cat.summary}</p>
-                    <div className="flex items-center gap-1 pt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span className="text-[10px] font-black text-secondary uppercase tracking-widest">Explore</span>
-                      <ChevronRight className="w-3 h-3 text-secondary" />
+                  <div className="space-y-3 relative z-10">
+                    <h4 className="text-xl font-black text-foreground uppercase tracking-tight">{cat.label}</h4>
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">{cat.summary}</p>
+                    <div className="flex items-center gap-2 pt-2 animate-pulse">
+                      <span className="text-[10px] font-black text-secondary uppercase tracking-[0.2em]">Explore</span>
+                      <ChevronRight className="w-4 h-4 text-secondary" />
                     </div>
                   </div>
+                  <div className={`absolute top-0 right-0 w-32 h-32 ${cat.bg} blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity translate-x-12 -translate-y-12`} />
                 </button>
               ))}
             </div>

@@ -59,10 +59,10 @@ export function MacrovascularDefense() {
             Specialist Module: Macrovascular (Heart & Stroke) Defense
           </div>
           <h2 className="text-4xl lg:text-7xl font-black text-foreground leading-[1.1] tracking-tighter">
-            Defending the <br /> <span className="text-red-500 text-glow">Large</span> <br /> Vessels.
+            Heart Health & <br /> <span className="text-red-500 text-glow">ABC</span> <br /> Targets.
           </h2>
           <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl font-medium">
-             Arterial narrowing leads to systemic disorders. High-insulin levels and insulin resistance drive a cascade of vascular damage.
+             Protecting your large vessels requires hitting the **ABC baseline**: A1C, Blood Pressure, and Cholesterol. Precision leads to resilience.
           </p>
         </div>
 
@@ -83,7 +83,22 @@ export function MacrovascularDefense() {
       </div>
 
       {/* Grid: Macrovascular Conditions */}
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-4 gap-6">
+         <div className="p-8 rounded-[3rem] bg-slate-950 border border-white/5 space-y-4">
+            <h4 className="text-xl font-black text-white italic">The ABC Shield</h4>
+            <div className="space-y-4">
+               {[
+                 { t: "A1C Level", v: "< 7.0%", c: "text-primary" },
+                 { t: "Blood Pressure", v: "< 130/80", c: "text-amber-500" },
+                 { t: "Cholesterol", v: "LDL < 100", c: "text-red-500" }
+               ].map(abc => (
+                 <div key={abc.t} className="flex justify-between items-center border-b border-white/5 pb-2">
+                    <span className="text-[10px] font-black uppercase text-slate-500">{abc.t}</span>
+                    <span className={`text-[11px] font-black ${abc.c}`}>{abc.v}</span>
+                 </div>
+               ))}
+            </div>
+         </div>
          {macrovascularRisks.map((risk, i) => (
            <div key={i} className="p-10 rounded-[40px] bg-card border border-border group hover:border-red-500/40 transition-all space-y-6">
               <div className={`w-14 h-14 rounded-2xl ${risk.bg} flex items-center justify-center group-hover:scale-110 transition-transform`}>

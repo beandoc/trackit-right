@@ -37,6 +37,8 @@ import { GlycemicManagementHub } from "@/components/GlycemicManagementHub"
 import { IndianPlateMethod } from "@/components/IndianPlateMethod"
 import { NutritionalMasteryHub } from "@/components/NutritionalMasteryHub"
 import { MedicationTaxonomyHub } from "@/components/MedicationTaxonomyHub"
+import { MentalHealthResilience } from "@/components/MentalHealthResilience"
+import { HealthMaintenanceHub } from "@/components/HealthMaintenanceHub"
 import { 
   Activity, 
   Shield, 
@@ -176,7 +178,7 @@ export default function Home() {
 
         {/* Clinical Navigator: Modular Discovery Path */}
         <section id="clinical-navigator">
-          <ClinicalNavigator />
+          <ClinicalNavigator onSelectSpecialty={openSpecialty} />
         </section>
 
         {/* Specialist Hub: Simplified Clinical Pillars */}
@@ -226,6 +228,7 @@ export default function Home() {
           {activeSpecialty?.id === 'foundation' && (
             <div className="space-y-16">
               <DiabetesBasicsHub />
+              <HealthMaintenanceHub />
               <IndianPlateMethod />
               <NutritionalMasteryHub />
               <MedicationTaxonomyHub />
@@ -269,10 +272,28 @@ export default function Home() {
           {activeSpecialty?.id === 'macro' && <MacrovascularDefense />}
           {activeSpecialty?.id === 'lifestyle' && <LifestyleNavigator />}
           {activeSpecialty?.id === 'footcare' && <FootCareSpecialist />}
-          {activeSpecialty?.id === 'diet' && <AdvancedDietProtocol />}
+          {activeSpecialty?.id === 'diet' && (
+            <div className="space-y-16">
+               <IndianPlateMethod />
+               <NutritionalMasteryHub />
+               <AdvancedDietProtocol />
+            </div>
+          )}
+          {activeSpecialty?.id === 'medications' && (
+            <div className="space-y-16">
+               <MedicationTaxonomyHub />
+               <InsulinInjectionGuide />
+               <InsulinFoundations />
+            </div>
+          )}
           {activeSpecialty?.id === 'cessation' && <CessationSpecialist />}
           {activeSpecialty?.id === 'sickday' && <SickDayProtocol />}
-          {activeSpecialty?.id === 'support' && <PsychologicalDefense />}
+          {activeSpecialty?.id === 'support' && (
+            <div className="space-y-16">
+               <MentalHealthResilience />
+               <PsychologicalDefense />
+            </div>
+          )}
         </ClinicalDrawer>
 
         {/* Cross-Cutting Clinical Utilities */}
